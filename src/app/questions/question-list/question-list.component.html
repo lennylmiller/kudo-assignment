@@ -1,28 +1,35 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<!-- <mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
+<mat-table [dataSource]="questions" class="mat-elevation-z8">
   <!-- Position Column -->
   <ng-container matColumnDef="position">
-    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    <mat-header-cell *matHeaderCellDef> A </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.optionOne.text}} </mat-cell>
+  </ng-container>
+
+  <!-- Or Column -->
+  <ng-container matColumnDef="or">
+    <mat-header-cell *matHeaderCellDef> OR </mat-header-cell>
+    <mat-cell *matCellDef="let element"></mat-cell>
   </ng-container>
 
   <!-- Weight Column -->
   <ng-container matColumnDef="weight">
-    <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    <mat-header-cell *matHeaderCellDef> B </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.optionTwo.text}} </mat-cell>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="symbol">
-    <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.timestamp}} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let question; columns: displayedColumns;" (click)="editQuestion(question)"></mat-row>
+  <mat-row class="example-element-row" *matRowDef="let question; columns: displayedColumns;" (click)="editQuestion(question)"></mat-row>
 </mat-table>

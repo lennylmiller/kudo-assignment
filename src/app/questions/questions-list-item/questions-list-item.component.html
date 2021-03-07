@@ -1,0 +1,10 @@
+<mat-list>
+  <mat-list-item *ngFor="let question of questions">
+    <img matListAvatar src="{{ question.iconUrl }}" alt="{{ question.url }}" />
+    <h3 matLine>{{ question.description }}</h3>
+    <p matLine>
+
+      <span class="demo-2"> -- {{ question.description }} </span>
+    </p>
+  </mat-list-item>
+</mat-list>

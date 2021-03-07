@@ -1,0 +1,37 @@
+<div class="questions-panel">
+  <div class="header">
+    <h2 class="title">All Questions</h2>
+
+    <button mat-mini-fab>
+      <mat-icon class="add-question-btn" (click)="onAddQuestion()"
+        >add</mat-icon
+      >
+    </button>
+  </div>
+
+  <div class="counters">
+    <p>In Promo: {{ promoTotal$ | async }}</p>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Unanswered">
+
+      <questions-list-item
+        (questionChanged)="reload()"
+        [questions]="beginnerQuestions$ | async"
+      >
+      </questions-list-item>
+
+    </mat-tab>
+
+    <mat-tab label="Answered">
+
+      <questions-list-item
+        (questionChanged)="reload()"
+        [questions]="advancedQuestions$ | async"
+      ></questions-list-item>
+
+
+    </mat-tab>
+  </mat-tab-group>
+</div>

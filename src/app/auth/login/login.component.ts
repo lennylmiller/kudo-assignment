@@ -21,16 +21,15 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-      private fb:FormBuilder,
+      private fb: FormBuilder,
       private auth: AuthService,
-      private router:Router,
+      private router: Router,
       private store: Store<AppState>) {
 
       this.form = fb.group({
-          email: ['test@angular-university.io', [Validators.required]],
-          password: ['test', [Validators.required]]
+          email: ['rashmi@kudo-assignment.io', [Validators.required]],
+          password: ['admin', [Validators.required]]
       });
-
   }
 
   ngOnInit() {
@@ -49,7 +48,7 @@ export class LoginComponent implements OnInit {
 
                   this.store.dispatch(login({user}));
 
-                  this.router.navigateByUrl('/courses');
+                  this.router.navigateByUrl('/questions');
 
               })
           )

@@ -1,45 +1,35 @@
-
-
 import * as express from 'express';
-import {Application} from "express";
-import {getAllCourses, getCourseByUrl} from "./get-courses.route";
-import {searchLessons} from "./search-lessons.route";
-import {loginUser} from "./auth.route";
-import {saveCourse} from "./save-course.route";
-import {createCourse} from './create-course.route';
-import {deleteCourse} from './delete-course.route';
+import { Application } from 'express';
+import { getAllQuestions, getQuestionByUrl } from './get-questions.route';
+import { searchAnswers } from './search-answers.route';
+import { loginUser } from './auth.route';
+import { saveQuestion } from './save-question.route';
+import { createQuestion } from './create-question.route';
+import { deleteQuestion } from './delete-question.route';
 
 const bodyParser = require('body-parser');
 
-
-
 const app: Application = express();
-
 
 app.use(bodyParser.json());
 
-
 app.route('/api/login').post(loginUser);
 
-app.route('/api/courses').get(getAllCourses);
+app.route('/api/questions').get(getAllQuestions);
 
-app.route('/api/course').post(createCourse);
+app.route('/api/question').post(createQuestion);
 
-app.route('/api/course/:id').put(saveCourse);
+app.route('/api/question/:id').put(saveQuestion);
 
-app.route('/api/course/:id').delete(deleteCourse);
+app.route('/api/question/:id').delete(deleteQuestion);
 
-app.route('/api/courses/:courseUrl').get(getCourseByUrl);
+app.route('/api/questions/:questionUrl').get(getQuestionByUrl);
 
-app.route('/api/lessons').get(searchLessons);
+app.route('/api/answers').get(searchAnswers);
 
-
-
-
-const httpServer:any = app.listen(9000, () => {
-    console.log("HTTP REST API Server running at http://localhost:" + httpServer.address().port);
+const httpServer: any = app.listen(9000, () => {
+  console.log(
+    'HTTP REST API Server running at http://localhost:' +
+      httpServer.address().port
+  );
 });
-
-
-
-

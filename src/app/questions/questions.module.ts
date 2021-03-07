@@ -20,6 +20,7 @@ import { QuestionsResolver } from './services/questions.resolver';
 import { QuestionsDataService } from './services/questions-data.service';
 import { AnswerEntityService } from './services/answer-entity.service';
 import { QuestionsListItemComponent } from './questions-list-item/questions-list-item.component';
+import { QuestionListComponent } from './question-list/question-list.component';
 
 export const QuestionsRoutes: Routes = [
   {
@@ -63,6 +64,7 @@ const entityMetadata: EntityMetadataMap = {
     QuestionsListItemComponent,
     EditQuestionDialogComponent,
     QuestionComponent,
+    QuestionListComponent,
   ],
   exports: [
     HomeComponent,

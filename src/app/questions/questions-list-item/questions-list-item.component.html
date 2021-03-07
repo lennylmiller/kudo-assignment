@@ -4,7 +4,17 @@
     <h3 matLine>{{ question.description }}</h3>
     <p matLine>
 
-      <span class="demo-2"> -- {{ question.description }} </span>
+    <button mat-raised-button color="primary" [routerLink]="['/questions', question.url]">
+      VIEW
+    </button>
+
+    <button mat-mini-fab color="accent">
+      <mat-icon class="add-question-btn" (click)="editQuestion(question)">edit</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="warn">
+      <mat-icon class="add-question-btn" (click)="onDeleteQuestion(question)">delete</mat-icon>
+    </button>
     </p>
   </mat-list-item>
 </mat-list>

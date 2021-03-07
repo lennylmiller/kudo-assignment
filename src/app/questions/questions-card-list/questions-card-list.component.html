@@ -13,24 +13,16 @@
   </mat-card-content>
 
   <mat-card-actions class="question-actions">
-    <button
-      mat-raised-button
-      color="primary"
-      [routerLink]="['/questions', question.url]"
-    >
+    <button mat-raised-button color="primary" [routerLink]="['/questions', question.url]">
       VIEW
     </button>
 
     <button mat-mini-fab color="accent">
-      <mat-icon class="add-question-btn" (click)="editQuestion(question)"
-        >edit</mat-icon
-      >
+      <mat-icon class="add-question-btn" (click)="editQuestion(question)">edit</mat-icon>
     </button>
 
     <button mat-mini-fab color="warn">
-      <mat-icon class="add-question-btn" (click)="onDeleteQuestion(question)"
-        >delete
-      </mat-icon>
+      <mat-icon class="add-question-btn" (click)="onDeleteQuestion(question)">delete</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>

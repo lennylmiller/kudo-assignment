@@ -1,6 +1,6 @@
 <div class="questions-panel">
   <div class="header">
-    <h2 class="title">All Questions</h2>
+    <h2 class="title">Add Question</h2>
 
     <button mat-mini-fab>
       <mat-icon class="add-question-btn" (click)="onAddQuestion()"
@@ -15,23 +15,17 @@
 
   <mat-tab-group>
     <mat-tab label="Unanswered">
-
-      <questions-list-item
+      <question-list
         (questionChanged)="reload()"
         [questions]="beginnerQuestions$ | async"
-      >
-      </questions-list-item>
-
+      ></question-list>
     </mat-tab>
 
     <mat-tab label="Answered">
-
-      <questions-list-item
+      <question-list
         (questionChanged)="reload()"
         [questions]="advancedQuestions$ | async"
-      ></questions-list-item>
-
-
+      ></question-list>
     </mat-tab>
   </mat-tab-group>
 </div>

@@ -1,17 +1,28 @@
-
 >>> body {
-    margin: 0;
+  margin: 0;
 }
 
 main {
-    margin: 30px;
+  margin: 30px;
 }
 
 .menu-button {
-    background: rgba(255, 170, 0, 0.76);
-    color: white;
-    border: none;
-    cursor:pointer;
-    outline:none;
+  background: rgba(255, 170, 0, 0.76);
+  color: white;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.example-icon {
+  padding: 0 14px;
 }
 
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.user-name {
+  font-size: 10px;
+  margin-top: -18px;
+  margin-bottom: -10px
+}

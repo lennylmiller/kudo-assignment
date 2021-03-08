@@ -1,21 +1,31 @@
-
+export interface Option {
+  votes: string[],
+  text: string
+}
 export interface Question {
   id: number;
-  seqNo:number;
-  url:string;
-  iconUrl: string;
-  questionListIcon: string;
+  author: string,
+  timestamp: number;
+  optionOne: Option,
+  optionTwo: Option,
+
+
   description: string;
   longDescription?: string;
+  iconUrl: string;
   category: string;
   answersCount: number;
+  seqNo:number;
+  url:string;
+
+  questionListIcon: string;
   promo: boolean;
 }
 
 
 export function compareQuestions(c1:Question, c2: Question) {
 
-  const compare = c1.seqNo - c2.seqNo;
+  const compare = c2.timestamp - c1.timestamp;
 
   if (compare > 0) {
     return 1;

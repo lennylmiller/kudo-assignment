@@ -16,6 +16,7 @@ import {
 import { compareQuestions, Question } from './model/question';
 import { compareAnswers, Answer } from './model/answer';
 import { QuestionEntityService } from './services/question-entity.service';
+
 import { QuestionsResolver } from './services/questions.resolver';
 import { QuestionsDataService } from './services/questions-data.service';
 import { AnswerEntityService } from './services/answer-entity.service';
@@ -86,10 +87,10 @@ export class QuestionsModule {
   constructor(
     private eds: EntityDefinitionService,
     private entityDataService: EntityDataService,
-    private QuestionsDataService: QuestionsDataService
+    private questionsDataService: QuestionsDataService,
   ) {
     eds.registerMetadataMap(entityMetadata);
 
-    entityDataService.registerService('Question', QuestionsDataService);
+    entityDataService.registerService('Question', questionsDataService);
   }
 }

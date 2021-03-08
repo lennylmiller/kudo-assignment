@@ -1,16 +1,17 @@
 <!-- <mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
 <mat-table [dataSource]="questions" class="mat-elevation-z8">
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
+  <!-- Author Column -->
+  <ng-container matColumnDef="author">
     <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.author}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.author}} {{ element.seqNo }} </mat-cell>
   </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> A </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.optionOne.text}} </mat-cell>
+  <!-- First Option Column -->
+  <ng-container matColumnDef="firstOption">
+    <mat-header-cell *matHeaderCellDef> First Option </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.optionOne.text }} </mat-cell>
   </ng-container>
+
 
   <!-- Or Column -->
   <ng-container matColumnDef="or">
@@ -18,16 +19,16 @@
     <mat-cell *matCellDef="let element"></mat-cell>
   </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <mat-header-cell *matHeaderCellDef> B </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.optionTwo.text}} </mat-cell>
+  <!-- Second Option Column -->
+  <ng-container matColumnDef="secondOption">
+    <mat-header-cell *matHeaderCellDef> Second Option </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.optionTwo.text }} </mat-cell>
   </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
+  <!-- Timestamp Column -->
+  <ng-container matColumnDef="timestamp">
     <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.timestamp}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.timestamp | date: 'short'}} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

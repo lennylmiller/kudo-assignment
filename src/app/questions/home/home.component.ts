@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Question } from '../model/question';
 import { defaultDialogConfig } from '../shared/default-dialog-config';
 import { QuestionEntityService } from '../services/question-entity.service';
 import { EditQuestionDialogComponent } from '../edit-question-dialog/edit-question-dialog.component';
+import { User } from '../../auth/model/user.model';
 
 @Component({
   selector: 'home',
@@ -20,6 +21,8 @@ export class HomeComponent implements OnInit {
   beginnerQuestions$: Observable<Question[]>;
 
   advancedQuestions$: Observable<Question[]>;
+
+  loggedInUser$: Observable<User | User[]>;
 
   constructor(
     private dialog: MatDialog,

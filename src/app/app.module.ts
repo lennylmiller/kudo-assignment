@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularMaterialModule } from './angular-material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
@@ -18,25 +18,22 @@ import { EntityDataModule } from '@ngrx/data';
 const routes: Routes = [
   {
     path: 'questions',
-    loadChildren: () => import('./questions/questions.module').then(m => m.QuestionsModule),
-    canActivate: [AuthGuard]
+    loadChildren: () =>
+      import('./questions/questions.module').then((m) => m.QuestionsModule),
+    canActivate: [AuthGuard],
   },
   {
     path: '**',
-    redirectTo: '/'
-  }
+    redirectTo: '/',
+  },
 ];
-
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes, {relativeLinkResolution: 'legacy'}),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     HttpClientModule,
     AuthModule.forRoot(),
     StoreModule.forRoot(reducers, {
@@ -45,19 +42,21 @@ const routes: Routes = [
         strictStateImmutability: true,
         strictActionImmutability: true,
         strictActionSerializability: true,
-        strictStateSerializability: true
-      }
+        strictStateSerializability: true,
+      },
     }),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot({}),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
-      routerState: RouterState.Minimal
+      routerState: RouterState.Minimal,
     }),
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {
-}
+export class AppModule {}

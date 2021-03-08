@@ -38,19 +38,21 @@ export class QuestionListComponent implements OnInit {
   @Output()
   questionChanged = new EventEmitter();
 
-  dataSource = ELEMENT_DATA;
-  displayedColumns: string[] = ['position', 'name', 'or', 'weight', 'symbol'];
-  expandedElement: PeriodicElement | null;
+  displayedColumns: string[] = [
+    'author',
+    'firstOption',
+    'or',
+    'secondOption',
+    'timestamp',
+  ];
 
-  constructor(
-    private dialog: MatDialog,
-  ) {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   editQuestion(question: Question) {
     const dialogConfig = defaultDialogConfig();
-    console.log({ question })
+    console.log({ question });
     dialogConfig.data = {
       dialogTitle: 'Edit Question',
       question,
@@ -63,25 +65,3 @@ export class QuestionListComponent implements OnInit {
       .subscribe(() => this.questionChanged.emit());
   }
 }
-
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  imageSrc: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', imageSrc: '' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', imageSrc: '' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li', imageSrc: '' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be', imageSrc: '' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B', imageSrc: '' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C', imageSrc: '' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N', imageSrc: '' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O', imageSrc: '' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F', imageSrc: '' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne', imageSrc: '' },
-];

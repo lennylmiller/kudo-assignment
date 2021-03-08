@@ -1,12 +1,8 @@
 export const USERS = {
-  1: {
-    id: 1,
-    email: 'rashmi@kudo-assignment.io',
+  'rashmi': {
+    id: 'rashmi',
+    email: 'admin@kudo-assignment.io',
     password: 'admin',
-
-    role: 'ADMIN',   // ADMIN, AUTHOR, RESPONDENT
-
-    userName: 'rashmi',
     name: 'Rashmi Manandhar',
     avatarURL: 'https://kudo-assignment.s3-us-west-2.amazonaws.com/rashmi.jpg',
     answers: {
@@ -20,14 +16,10 @@ export const USERS = {
       'am8ehyc8byjqgar0jgpub9'
     ]
   },
-  2: {
-    id: 2,
+  'julian': {
+    id: 'julian',
     email: 'julian@kudo-assignment.io',
-
-    role: 'AUTHOR',   // ADMIN, AUTHOR, RESPONDENT
-
-    password: '',
-    userName: 'julian',
+    password: 'admin',
     name: 'Julian Manandhar',
     avatarURL: 'https://kudo-assignment.s3-us-west-2.amazonaws.com/julian.jpg',
     answers: {
@@ -39,14 +31,10 @@ export const USERS = {
       'vthrdm985a262al8qx3do'
     ]
   },
-  3: {
-    id: 3,
-    email: 'jahn-doe@kudo-assignment.io',
+  'jahndoe': {
+    id: 'jahndoe',
+    email: 'john-doe@kudo-assignment.io',
     password: 'admin',
-
-    role: 'RESPONDENT',   // ADMIN, AUTHOR, RESPONDENT TODO: If time permits, add an emailable link
-
-    userName: 'jahndoe',
     name: 'John Doe',
     avatarURL: 'https://kudo-assignment.s3-us-west-2.amazonaws.com/johndoe.jpg',
     answers: {
@@ -62,10 +50,8 @@ export const USERS = {
 };
 
 export const QUESTIONS: any = {
-  1: {
-    id: 1,
-
-    uid: '8xf0y6ziyjabvozdd253nd',
+  '8xf0y6ziyjabvozdd253nd': {
+    id: '8xf0y6ziyjabvozdd253nd',
     author: 'rashmi',
     timestamp: 1467166872634,
     optionOne: {
@@ -86,10 +72,8 @@ export const QUESTIONS: any = {
     url: 'memory-loss',
   },
 
-  2: {
-    id: 2,
-
-    uid: '6ni6ok3ym7mf1p33lnez',
+  '6ni6ok3ym7mf1p33lnez': {
+    id: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
     timestamp: 1468479767190,
     optionOne: {
@@ -110,10 +94,8 @@ export const QUESTIONS: any = {
     url: 'super-hero-or-super-villain',
   },
 
-  3: {
-    id: 3,
-
-    uid: 'am8ehyc8byjqgar0jgpub9',
+  'am8ehyc8byjqgar0jgpub9': {
+    id: 'am8ehyc8byjqgar0jgpub9',
     author: 'rashmi',
     timestamp: 1488579767190,
     optionOne: {
@@ -135,10 +117,8 @@ export const QUESTIONS: any = {
     url: 'telekinetic-or-telepathic',
   },
 
-  4: {
-    id: 4,
-
-    uid: 'loxhs1bqm25b708cmbf3g',
+  'loxhs1bqm25b708cmbf3g': {
+    id: 'loxhs1bqm25b708cmbf3g',
     author: 'julian',
     timestamp: 1482579767190,
     optionOne: {
@@ -159,10 +139,8 @@ export const QUESTIONS: any = {
     url: 'backend-or-front-end-developer',
   },
 
-  5: {
-    id: 5,
-
-    uid: 'vthrdm985a262al8qx3do',
+  'vthrdm985a262al8qx3do': {
+    id: 'vthrdm985a262al8qx3do',
     author: 'julian',
     timestamp: 1489579767190,
     optionOne: {
@@ -183,10 +161,8 @@ export const QUESTIONS: any = {
     url: 'fifty-for-you-five-hundred-for-a-friend'
   },
 
-  6: {
-    id: 6,
-
-    uid: 'xj352vofupe1dqz9emx13r',
+  'xj352vofupe1dqz9emx13r': {
+    id: 'xj352vofupe1dqz9emx13r',
     author: 'johndoe',
     timestamp: 1493579767190,
     optionOne: {

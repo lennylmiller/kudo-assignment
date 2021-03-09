@@ -12,6 +12,7 @@ import { AppState } from './state/app.state.';
 import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
 import { login, logout } from './auth/auth.actions';
 import { User } from './auth/model/user.model';
+import { UsersDataService } from './users/services/users-data.service';
 
 @Component({
   selector: 'app-root',
@@ -35,13 +36,21 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store<AppState>,
-  ) { }
+    private usersService: UsersDataService
+  ) {}
+
+  ngOnChanges() {
+    console.log('ngOnChanges')
+  }
 
   ngOnInit() {
     const userProfile = localStorage.getItem('user');
+    const currentUser = JSON.parse(userProfile);
 
     if (userProfile) {
-      const currentUser = JSON.parse(userProfile);
+      this.loggedInUser$ = this.usersService.getById(currentUser.id);
+      console.log('->>>>>>>>>>>>>>>>>>>>>>>>>>',{ currentUser, loggedInUser: this.loggedInUser$ });
+
       this.store.dispatch(login({ user: currentUser }));
     }
 

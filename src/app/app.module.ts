@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { metaReducers, reducers } from './state/app.state.';
 import { AuthGuard } from './auth/auth.guard';
 import { EntityDataModule } from '@ngrx/data';
+import { UsersDataService } from './users/services/users-data.service';
 
 const routes: Routes = [
   {
@@ -34,7 +35,6 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AngularMaterialModule,
@@ -62,6 +62,8 @@ const routes: Routes = [
       routerState: RouterState.Minimal,
     }),
   ],
+  declarations: [AppComponent],
+  providers: [UsersDataService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -21,7 +21,9 @@ export class LeaderBoardComponent implements OnInit {
   ngOnInit(): void {
     this.users$ = this.userService.entities$.pipe(
       map((users) =>
-        users.filter((user) => user.active)
+        users.filter((user) => {
+          return user.active
+        })
       )
     );
   }

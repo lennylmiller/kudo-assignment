@@ -4,16 +4,17 @@
 
 ### Todo
 
+- [ ] Fix the routing issue. Maybe just centralize????
 - [x] Way of impersonating/logging in as an existing user.
 - [x] Know Who the logged in user is.
 - [x] Show logged in user their list of questions.
+  - [ ] This only works with a logged in user in localstorage
 - [x] Newest questions at the top. Sort by timestamp.
-- [ ] Create a leader board ['userName', 'userPicture', 'numberAsked', 'numberAnswered']
-- [ ] Order leader board by Sum(numberAsked + numberAnswered);
-- [ ] Only show logged in user questions in /questions.
-- [ ] Toggle between answered and unanswered questions.
-- [ ] Entering an address in address bar redirects to login.
-- [ ] You can only answer a question once.
+- [x] Create a leader board ['userName', 'userPicture', 'numberAsked', 'numberAnswered']
+- [x] Order leader board by Sum(numberAsked + numberAnswered);
+- [x] Only show logged in user questions in /questions.
+- [x] Toggle between answered and unanswered questions.
+- [ ] You can only answer a question once. If it's been answered, use the readonly dialog
 - [ ] View question details by clicking row.
 - [ ] Input answers to question details.
 - [ ] Position spinner in the middle.
@@ -23,6 +24,7 @@
 - [ ] Immediately after answering a question, it should switch to the Answered tab.
 - [ ] Create a new question "Would you rather ________________ or _______________".
 - [ ] Navigate to valid url (Earlier, it was stated that typing directly in will cause a redirect to login???)
+- [ ] Entering an address in address bar redirects to login.
 - [ ] Create registration - OPTIONAL.
 - [ ] Cleanup 
   - [ ] Move inline styles to stylesheets

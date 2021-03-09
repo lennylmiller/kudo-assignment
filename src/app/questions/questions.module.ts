@@ -49,7 +49,7 @@ const entityMetadata: EntityMetadataMap = {
     sortComparer: compareQuestions,
     entityDispatcherOptions: {
       optimisticUpdate: true,
-    },
+    }
   },
   Answer: {
     sortComparer: compareAnswers,

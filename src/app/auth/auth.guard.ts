@@ -1,7 +1,7 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {AppState} from '../state/app.state.';
+import {AppState} from '../reducers';
 import {select, Store} from '@ngrx/store';
 import {isLoggedIn} from './auth.selectors';
 import {tap} from 'rxjs/operators';

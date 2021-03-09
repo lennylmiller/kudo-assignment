@@ -11,10 +11,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
-import { metaReducers, reducers } from './state/app.state.';
+import { metaReducers } from './reducers/';
 import { AuthGuard } from './auth/auth.guard';
 import { EntityDataModule } from '@ngrx/data';
 import { UsersDataService } from './users/services/users-data.service';
+import { UsersModule } from  './users/users.module';
+import { reducers } from './reducers';
+
 
 const routes: Routes = [
   {
@@ -40,6 +43,7 @@ const routes: Routes = [
     AngularMaterialModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    UsersModule,
     HttpClientModule,
     AuthModule.forRoot(),
     StoreModule.forRoot(reducers, {

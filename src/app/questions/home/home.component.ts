@@ -22,6 +22,11 @@ export class HomeComponent implements OnInit {
 
   advancedQuestions$: Observable<Question[]>;
 
+  unAnsweredQuestions$: Observable<Question[]>;
+
+  answeredQuestions$: Observable<Question[]>;
+
+
   loggedInUser$: Observable<User | User[]>;
 
   constructor(
@@ -34,6 +39,24 @@ export class HomeComponent implements OnInit {
   }
 
   reload() {
+    const jsonUser = localStorage.getItem('user'); // Not clear on the best way to make this ngrx/'esque
+    const user = JSON.parse(jsonUser);
+    this.unAnsweredQuestions$ = this.questionsService.entities$.pipe(
+      map((questions) =>
+        questions.filter((question) => {
+          return !question.optionOne.votes.includes(user.id) && !question.optionTwo.votes.includes(user.id);
+        })
+      )
+    );
+
+    this.answeredQuestions$ = this.questionsService.entities$.pipe(
+      map((questions) =>
+        questions.filter((question) => {
+          return (question.optionOne.votes.includes(user.id) || question.optionTwo.votes.includes(user.id));
+        })
+      )
+    );
+
     this.beginnerQuestions$ = this.questionsService.entities$.pipe(
       map((questions) =>
         questions.filter((question) => question.category == 'BEGINNER')
@@ -49,6 +72,7 @@ export class HomeComponent implements OnInit {
     this.promoTotal$ = this.questionsService.entities$.pipe(
       map((questions) => questions.filter((question) => question.promo).length)
     );
+
   }
 
   onAddQuestion() {

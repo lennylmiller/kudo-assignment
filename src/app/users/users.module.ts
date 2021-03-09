@@ -1,11 +1,4 @@
 import { NgModule } from '@angular/core';
-import { AngularMaterialModule } from '../angular-material.module';
-import { CommonModule } from '@angular/common';
-
-import { LeaderBoardComponent } from './leader-board/leader-board.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserComponent } from './user.component';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {
@@ -14,11 +7,20 @@ import {
   EntityMetadataMap,
 } from '@ngrx/data';
 
+import { AngularMaterialModule } from '../angular-material.module';
+import { LeaderBoardComponent } from './leader-board/leader-board.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserComponent } from './user.component';
 
 import { UserEntityService } from './services/user-entity.service';
 import { UsersResolver } from './services/users.resolver';
 import { UsersDataService } from './services/users-data.service';
 import { compareUsers } from './model/user';
+
+
+import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+import { usersReducer } from './users.reducer';
 
 export const UsersRoutes: Routes = [
   {
@@ -30,7 +32,7 @@ export const UsersRoutes: Routes = [
   },
   {
     path: ':userUrl',
-    component: UserComponent,
+    component: LeaderBoardComponent,
     resolve: {
       Users: UsersResolver,
     },
@@ -46,7 +48,8 @@ const entityMetadata: EntityMetadataMap = {
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(UsersRoutes),
+    // RouterModule.forChild(UsersRoutes),
+    StoreModule.forFeature('users', usersReducer),
     AngularMaterialModule,
     ReactiveFormsModule,
   ],

@@ -1,22 +1,22 @@
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
-import {routerReducer} from '@ngrx/router-store';
-
+import { State as UserState } from './../users/users.reducer';
 import { environment } from '../../environments/environment';
-import { UserState } from '../users/state/user.reducer';
+
+import { usersReducer } from  '../users/users.reducer';
 
 export interface AppState {
+  users: UserState;
 }
 
-export const reducers: ActionReducerMap<AppState> = {
-
-};
+export const reducers: ActionReducerMap<any> = {
+  users: usersReducer
+}
 
 export function logger(reducer:ActionReducer<any>)
     : ActionReducer<any> {
     return (state, action) => {
-        // console.log("state before: ", state);
         // console.log("action", action);
-
+        // console.log("state", state);
         return reducer(state, action);
     }
 
@@ -25,5 +25,4 @@ export function logger(reducer:ActionReducer<any>)
 
 export const metaReducers: MetaReducer<AppState>[] =
     !environment.production ? [logger] : [];
-
 

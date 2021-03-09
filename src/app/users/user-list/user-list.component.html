@@ -1,6 +1,6 @@
 <!-- <mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
 <mat-table [dataSource]="users" class="mat-elevation-z8">
-  <!-- Avatar Column -->
+  <!-- Name Column -->
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
     <mat-cell *matCellDef="let element">
@@ -8,11 +8,11 @@
     </mat-cell>
   </ng-container>
 
-  <!-- Name Option Column -->
+  <!-- Avatar Option Column -->
   <ng-container matColumnDef="avatarURL">
     <mat-header-cell *matHeaderCellDef> AvatarURL </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      {{ element.avatarURL }}
+      <img [src]="element.avatarURL" alt="User Avatar" class="avatar" />
     </mat-cell>
   </ng-container>
 
@@ -29,14 +29,6 @@
     <mat-header-cell *matHeaderCellDef> Number Answered </mat-header-cell>
     <mat-cell *matCellDef="let element">
       {{ getAnswered(element) }}
-    </mat-cell>
-  </ng-container>
-
-  <!-- Questions Column -->
-  <ng-container matColumnDef="sumOfAskedAnswered">
-    <mat-header-cell *matHeaderCellDef> Sum Of Asked & Answered </mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      {{ sumOfAskedAnswered(element) }}
     </mat-cell>
   </ng-container>
 

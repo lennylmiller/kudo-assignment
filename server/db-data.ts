@@ -33,8 +33,8 @@ export const USERS = {
     ],
     active: true
   },
-  'jahndoe': {
-    id: 'jahndoe',
+  'johndoe': {
+    id: 'johndoe',
     email: 'john-doe@kudo-assignment.io',
     password: 'admin',
     name: 'John Doe',

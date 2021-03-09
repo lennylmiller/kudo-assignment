@@ -53,3 +53,17 @@ mat-row.example-element-row:active {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+.avatar {
+  vertical-align: middle;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+}

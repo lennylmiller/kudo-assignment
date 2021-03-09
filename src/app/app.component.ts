@@ -8,7 +8,7 @@ import {
   NavigationStart,
   Router,
 } from '@angular/router';
-import { AppState } from './state/app.state.';
+import { AppState } from './reducers/';
 import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
 import { login, logout } from './auth/auth.actions';
 import { User } from './auth/model/user.model';
@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
     this.currentUser = JSON.parse(userProfile);
 
     if (userProfile) {
-
       this.store.dispatch(login({ user: this.currentUser }));
     }
 

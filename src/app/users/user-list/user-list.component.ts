@@ -32,8 +32,7 @@ export class UserListComponent implements OnInit {
     'name',
     'avatarURL',
     'numberAsked',
-    'numberAnswered',
-    'sumOfAskedAnswered'
+    'numberAnswered'
   ];
 
   constructor() { }
@@ -44,10 +43,6 @@ export class UserListComponent implements OnInit {
 
   getAnswered(user) {
     return Object.keys(user.answers).length;
-  }
-
-  sumOfAskedAnswered(user) {
-    return this.getAsked(user) + this.getAnswered(user);
   }
 
   ngOnInit(): void {

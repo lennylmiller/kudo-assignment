@@ -17,14 +17,14 @@
     <mat-tab label="Unanswered">
       <question-list
         (questionChanged)="reload()"
-        [questions]="beginnerQuestions$ | async"
+        [questions]="unAnsweredQuestions$ | async"
       ></question-list>
     </mat-tab>
 
     <mat-tab label="Answered">
       <question-list
         (questionChanged)="reload()"
-        [questions]="advancedQuestions$ | async"
+        [questions]="answeredQuestions$ | async"
       ></question-list>
     </mat-tab>
   </mat-tab-group>

@@ -29,14 +29,26 @@ export class UserListComponent implements OnInit {
   users: User[];
 
   displayedColumns: string[] = [
-    'avatarURL',
     'name',
-    'email',
-    'answers',
-    'questions',
+    'avatarURL',
+    'numberAsked',
+    'numberAnswered',
+    'sumOfAskedAnswered'
   ];
 
   constructor() { }
+
+  getAsked(user) {
+    return user.questions.length;
+  }
+
+  getAnswered(user) {
+    return Object.keys(user.answers).length;
+  }
+
+  sumOfAskedAnswered(user) {
+    return this.getAsked(user) + this.getAnswered(user);
+  }
 
   ngOnInit(): void {
   }

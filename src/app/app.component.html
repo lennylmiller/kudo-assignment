@@ -30,7 +30,7 @@
     <span class="example-spacer"></span>
     <span *ngIf="isLoggedIn$ | async">
       <mat-icon class="example-icon">account_circle</mat-icon>
-      <p class="user-name">{{ user.name }}</p>
+      <p class="user-name">{{ currentUser.name }}</p>
     </span>
   </mat-toolbar>
 

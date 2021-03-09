@@ -1,14 +1,6 @@
 <!-- <mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
 <mat-table [dataSource]="users" class="mat-elevation-z8">
   <!-- Avatar Column -->
-  <ng-container matColumnDef="avatarURL">
-    <mat-header-cell *matHeaderCellDef> AvatarURL </mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      {{ element.avatarURL }}
-    </mat-cell>
-  </ng-container>
-
-  <!-- Name Option Column -->
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
     <mat-cell *matCellDef="let element">
@@ -16,24 +8,36 @@
     </mat-cell>
   </ng-container>
 
-  <!-- Email Column -->
-  <ng-container matColumnDef="email">
-    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+  <!-- Name Option Column -->
+  <ng-container matColumnDef="avatarURL">
+    <mat-header-cell *matHeaderCellDef> AvatarURL </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      {{ element.email }}
+      {{ element.avatarURL }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="numberAsked">
+    <mat-header-cell *matHeaderCellDef> Number Asked </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ getAsked(element) }}
     </mat-cell>
   </ng-container>
 
   <!-- Answers Option Column -->
-  <ng-container matColumnDef="answers">
-    <mat-header-cell *matHeaderCellDef> Answer Stats </mat-header-cell>
-    <mat-cell *matCellDef="let element"> TODO: Not Certain </mat-cell>
+  <ng-container matColumnDef="numberAnswered">
+    <mat-header-cell *matHeaderCellDef> Number Answered </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ getAnswered(element) }}
+    </mat-cell>
   </ng-container>
 
   <!-- Questions Column -->
-  <ng-container matColumnDef="questions">
-    <mat-header-cell *matHeaderCellDef> Questions Stats </mat-header-cell>
-    <mat-cell *matCellDef="let element"> TODO: Not Certain </mat-cell>
+  <ng-container matColumnDef="sumOfAskedAnswered">
+    <mat-header-cell *matHeaderCellDef> Sum Of Asked & Answered </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ sumOfAskedAnswered(element) }}
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

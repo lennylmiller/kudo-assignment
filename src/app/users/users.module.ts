@@ -18,6 +18,7 @@ import {
 import { UserEntityService } from './services/user-entity.service';
 import { UsersResolver } from './services/users.resolver';
 import { UsersDataService } from './services/users-data.service';
+import { compareUsers } from './model/user';
 
 export const UsersRoutes: Routes = [
   {
@@ -38,7 +39,7 @@ export const UsersRoutes: Routes = [
 
 const entityMetadata: EntityMetadataMap = {
   User: {
-
+    sortComparer: compareUsers,
   }
 }
 

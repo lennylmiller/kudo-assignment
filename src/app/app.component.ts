@@ -29,9 +29,7 @@ export class AppComponent implements OnInit {
   loggedInUser$: Observable<User | User[]>;
 
   @Output()
-  user = {
-    name: 'Lenny Miller',
-  };
+  currentUser: User
 
   constructor(
     private router: Router,
@@ -45,13 +43,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const userProfile = localStorage.getItem('user');
-    const currentUser = JSON.parse(userProfile);
+    this.currentUser = JSON.parse(userProfile);
 
     if (userProfile) {
-      this.loggedInUser$ = this.usersService.getById(currentUser.id);
-      console.log('->>>>>>>>>>>>>>>>>>>>>>>>>>',{ currentUser, loggedInUser: this.loggedInUser$ });
 
-      this.store.dispatch(login({ user: currentUser }));
+      this.store.dispatch(login({ user: this.currentUser }));
     }
 
     this.router.events.subscribe((event) => {

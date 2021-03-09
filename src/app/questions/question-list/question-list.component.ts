@@ -52,7 +52,7 @@ export class QuestionListComponent implements OnInit {
 
   editQuestion(question: Question) {
     const dialogConfig = defaultDialogConfig();
-    console.log({ question });
+    // console.log({ question });
     dialogConfig.data = {
       dialogTitle: 'Edit Question',
       question,

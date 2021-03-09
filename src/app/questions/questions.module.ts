@@ -1,27 +1,31 @@
 import { NgModule } from '@angular/core';
 import { AngularMaterialModule } from '../angular-material.module';
 import { CommonModule } from '@angular/common';
+
 import { HomeComponent } from './home/home.component';
 import { QuestionsCardListComponent } from './questions-card-list/questions-card-list.component';
 import { EditQuestionDialogComponent } from './edit-question-dialog/edit-question-dialog.component';
-import { QuestionsHttpService } from './services/questions-http.service';
 import { QuestionComponent } from './question/question.component';
+import { QuestionsListItemComponent } from './questions-list-item/questions-list-item.component';
+import { QuestionListComponent } from './question-list/question-list.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
+import { QuestionsHttpService } from './services/questions-http.service';
 import { RouterModule, Routes } from '@angular/router';
 import {
   EntityDataService,
   EntityDefinitionService,
   EntityMetadataMap,
 } from '@ngrx/data';
+
 import { compareQuestions, Question } from './model/question';
 import { compareAnswers, Answer } from './model/answer';
-import { QuestionEntityService } from './services/question-entity.service';
 
+import { QuestionEntityService } from './services/question-entity.service';
 import { QuestionsResolver } from './services/questions.resolver';
 import { QuestionsDataService } from './services/questions-data.service';
+
 import { AnswerEntityService } from './services/answer-entity.service';
-import { QuestionsListItemComponent } from './questions-list-item/questions-list-item.component';
-import { QuestionListComponent } from './question-list/question-list.component';
 
 export const QuestionsRoutes: Routes = [
   {
@@ -57,7 +61,7 @@ const entityMetadata: EntityMetadataMap = {
     CommonModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    RouterModule.forChild(QuestionsRoutes),
+    RouterModule.forChild(QuestionsRoutes)
   ],
   declarations: [
     HomeComponent,
@@ -65,14 +69,14 @@ const entityMetadata: EntityMetadataMap = {
     QuestionsListItemComponent,
     EditQuestionDialogComponent,
     QuestionComponent,
-    QuestionListComponent,
+    QuestionListComponent
   ],
   exports: [
     HomeComponent,
     QuestionsCardListComponent,
     QuestionsListItemComponent,
     EditQuestionDialogComponent,
-    QuestionComponent,
+    QuestionComponent
   ],
   entryComponents: [EditQuestionDialogComponent],
   providers: [

@@ -11,7 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
-import { metaReducers, reducers } from './reducers';
+import { metaReducers, reducers } from './state/app.state.';
 import { AuthGuard } from './auth/auth.guard';
 import { EntityDataModule } from '@ngrx/data';
 
@@ -20,6 +20,12 @@ const routes: Routes = [
     path: 'questions',
     loadChildren: () =>
       import('./questions/questions.module').then((m) => m.QuestionsModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./users/users.module').then((m) => m.UsersModule),
     canActivate: [AuthGuard],
   },
   {

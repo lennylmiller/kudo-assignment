@@ -7,7 +7,7 @@ import { AuthService } from '../auth.service';
 import { tap } from 'rxjs/operators';
 import { noop } from 'rxjs';
 import { Router } from '@angular/router';
-import { AppState } from '../../reducers';
+import { AppState } from '../../state/app.state.';
 import { login } from '../auth.actions';
 import { AuthActions } from '../action-types';
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       .login(val.email, val.password)
       .pipe(
         tap((user) => {
-          console.log(user);
+          // console.log(user);
 
           this.store.dispatch(login({ user }));
 

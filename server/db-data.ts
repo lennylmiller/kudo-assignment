@@ -14,7 +14,8 @@ export const USERS = {
     questions: [
       '8xf0y6ziyjabvozdd253nd',
       'am8ehyc8byjqgar0jgpub9'
-    ]
+    ],
+    active: true
   },
   'julian': {
     id: 'julian',
@@ -29,7 +30,8 @@ export const USERS = {
     questions: [
       'loxhs1bqm25b708cmbf3g',
       'vthrdm985a262al8qx3do'
-    ]
+    ],
+    active: true
   },
   'jahndoe': {
     id: 'jahndoe',
@@ -45,7 +47,8 @@ export const USERS = {
     questions: [
       '6ni6ok3ym7mf1p33lnez',
       'xj352vofupe1dqz9emx13r'
-    ]
+    ],
+    active: true
   }
 };
 

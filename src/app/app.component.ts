@@ -8,7 +8,7 @@ import {
   NavigationStart,
   Router,
 } from '@angular/router';
-import { AppState } from './reducers';
+import { AppState } from './state/app.state.';
 import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
 import { login, logout } from './auth/auth.actions';
 import { User } from './auth/model/user.model';

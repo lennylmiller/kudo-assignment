@@ -6,6 +6,11 @@
         <span>Questions</span>
       </a>
 
+      <a mat-list-item routerLink="/users">
+        <mat-icon>leaderboard</mat-icon>
+        <span>Leader Board</span>
+      </a>
+
       <a mat-list-item routerLink="/login" *ngIf="isLoggedOut$ | async">
         <mat-icon>account_circle</mat-icon>
         <span>Login</span>

@@ -1,11 +1,15 @@
 import * as express from 'express';
 import { Application } from 'express';
+
 import { getAllQuestions, getQuestionByUrl } from './get-questions.route';
 import { searchAnswers } from './search-answers.route';
 import { loginUser } from './auth.route';
 import { saveQuestion } from './save-question.route';
 import { createQuestion } from './create-question.route';
 import { deleteQuestion } from './delete-question.route';
+
+import { getAllUsers, getUserByUrl } from './get-users.routes';
+
 
 const bodyParser = require('body-parser');
 
@@ -26,6 +30,10 @@ app.route('/api/question/:id').delete(deleteQuestion);
 app.route('/api/questions/:questionUrl').get(getQuestionByUrl);
 
 app.route('/api/answers').get(searchAnswers);
+
+app.route('/api/users').get(getAllUsers);
+
+app.route('/api/users/:userUrl').get(getUserByUrl);
 
 const httpServer: any = app.listen(9000, () => {
   console.log(

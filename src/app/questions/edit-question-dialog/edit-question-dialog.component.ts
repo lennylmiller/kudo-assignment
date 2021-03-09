@@ -68,7 +68,7 @@ export class EditQuestionDialogComponent {
       this.dialogRef.close();
     } else if (this.mode == 'create') {
       this.questionsService.add(question).subscribe((newQuestion) => {
-        console.log('New Question', newQuestion);
+        // console.log('New Question', newQuestion);
 
         this.dialogRef.close();
       });

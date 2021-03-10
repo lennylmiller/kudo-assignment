@@ -3,28 +3,28 @@
 ## Notes
 
 ### Todo
-
-- [ ] Fix the routing issue. Maybe just centralize????
 - [x] Way of impersonating/logging in as an existing user.
 - [x] Know Who the logged in user is.
 - [x] Show logged in user their list of questions.
-  - [ ] This only works with a logged in user in localstorage
 - [x] Newest questions at the top. Sort by timestamp.
-- [x] Create a leader board ['userName', 'userPicture', 'numberAsked', 'numberAnswered']
-- [x] Order leader board by Sum(numberAsked + numberAnswered);
+- [x] Create a leader board 
+- [x] Order leader board by (numberAsked + numberAnswered)
 - [x] Only show logged in user questions in /questions.
 - [x] Toggle between answered and unanswered questions.
 
-- [ ] You can only answer a question once. If it's been answered, use the readonly dialog
+- [ ] Logged in user can answer unanswered questions
+  - [x] View question details by clicking row.
+  - [x] Input answers to question details.
+  - [ ] Save a polling question
+  - [ ] Only answer question once.
+  - [ ] If answered use readonly dialog
+  - [ ] Logged in user can read answered questions
+  - [ ] Users response should be recorded and clearly visible on question details page.
+  - [ ] Immediately after answering a question, it should switch to the Answered tab.
+  - [ ] Upon answering a poll, switch to finished question popup.
 
-- [ ] View question details by clicking row.
-- [ ] Input answers to question details.
-- [ ] Users response should be recorded and clearly visible on question details page.
 
 - [ ] Create a new question "Would you rather ________________ or _______________".
-- [ ] Immediately after answering a question, it should switch to the Answered tab.
-- [ ] Upon answering a poll, switch to finished question popup.
-
 
 - [ ] Position spinner in the middle.
 - [ ] Show 404 for a question that doesn't exist.

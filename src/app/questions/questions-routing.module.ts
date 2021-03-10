@@ -19,5 +19,4 @@ export const QuestionsRoutes: Routes = [
   imports: [RouterModule.forChild(QuestionsRoutes)],
   exports: [RouterModule],
 })
-
 export class QuestionsRoutingModule {}

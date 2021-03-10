@@ -3,6 +3,7 @@
 ## Notes
 
 ### Todo
+
 - [x] Way of impersonating/logging in as an existing user.
 - [x] Know Who the logged in user is.
 - [x] Show logged in user their list of questions.
@@ -35,6 +36,9 @@
   - [ ] Move inline styles to stylesheets
   - [ ] Two
 
+## Would like a do-over
+ - [ ] Centralize the store artifacts, 
+ - [ ] Have the auth service use the users/model
 ### Users
 
 - id: number instead of id: string

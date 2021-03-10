@@ -19,7 +19,7 @@ export const authReducerInternal = createReducer(
     return {
       ...state,
       user,
-      isLoggedIn
+      isLoggedIn,
     };
   }),
 
@@ -27,7 +27,7 @@ export const authReducerInternal = createReducer(
     return {
       ...state,
       profile: null,
-      isLoggedIn: false
+      isLoggedIn: false,
     };
   })
 );

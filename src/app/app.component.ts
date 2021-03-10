@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, ErrorHandler, OnInit, Output } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import {
@@ -34,7 +34,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store<AppState>,
-    private usersService: UsersDataService
+    private usersService: UsersDataService,
+    private errorHandler: ErrorHandler
   ) {}
 
   ngOnChanges() {
@@ -44,6 +45,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const userProfile = localStorage.getItem('user');
     this.currentUser = JSON.parse(userProfile);
+
+
 
     if (userProfile) {
       this.store.dispatch(login({ user: this.currentUser }));

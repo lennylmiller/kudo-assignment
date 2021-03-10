@@ -3,7 +3,10 @@
   <!-- Author Column -->
   <ng-container matColumnDef="author">
     <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.author}} {{ element.seqNo }} </mat-cell>
+    <mat-cell *matCellDef="let element">
+      <img [src]="getAvatarURL(element.author)" alt="User Avatar" class="avatar" />
+      <!-- {{element.author}} -->
+    </mat-cell>
   </ng-container>
 
   <!-- First Option Column -->

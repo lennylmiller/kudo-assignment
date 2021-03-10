@@ -14,15 +14,20 @@
 - [x] Order leader board by Sum(numberAsked + numberAnswered);
 - [x] Only show logged in user questions in /questions.
 - [x] Toggle between answered and unanswered questions.
+
 - [ ] You can only answer a question once. If it's been answered, use the readonly dialog
+
 - [ ] View question details by clicking row.
 - [ ] Input answers to question details.
+- [ ] Users response should be recorded and clearly visible on question details page.
+
+- [ ] Create a new question "Would you rather ________________ or _______________".
+- [ ] Immediately after answering a question, it should switch to the Answered tab.
+- [ ] Upon answering a poll, switch to finished question popup.
+
+
 - [ ] Position spinner in the middle.
 - [ ] Show 404 for a question that doesn't exist.
-- [ ] Upon answering a poll, switch to finished question popup.
-- [ ] Users response should be recorded and clearly visible on question details page.
-- [ ] Immediately after answering a question, it should switch to the Answered tab.
-- [ ] Create a new question "Would you rather ________________ or _______________".
 - [ ] Navigate to valid url (Earlier, it was stated that typing directly in will cause a redirect to login???)
 - [ ] Entering an address in address bar redirects to login.
 - [ ] Create registration - OPTIONAL.

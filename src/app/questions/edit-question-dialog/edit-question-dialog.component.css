@@ -8,3 +8,19 @@ textarea {
   height: 100px;
   resize: vertical;
 }
+
+.example-card {
+  max-width: 400px;
+}
+
+mat-radio-group {
+  text-align: center;
+}
+.avatar {
+  vertical-align: middle;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

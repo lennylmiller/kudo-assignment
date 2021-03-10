@@ -48,13 +48,16 @@ export class QuestionListComponent implements OnInit {
 
   constructor(private dialog: MatDialog) {}
 
+  getAvatarURL(author) {
+    return `https://kudo-assignment.s3-us-west-2.amazonaws.com/${author}.jpg`
+  }
+
   ngOnInit(): void {}
 
   editQuestion(question: Question) {
     const dialogConfig = defaultDialogConfig();
     // console.log({ question });
     dialogConfig.data = {
-      dialogTitle: 'Edit Question',
       question,
       mode: 'update',
     };

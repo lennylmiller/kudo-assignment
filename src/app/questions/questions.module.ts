@@ -9,7 +9,7 @@ import { QuestionComponent } from './question/question.component';
 import { QuestionsListItemComponent } from './questions-list-item/questions-list-item.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuestionsHttpService } from './services/questions-http.service';
 import { RouterModule, Routes } from '@angular/router';
 import {
@@ -60,6 +60,7 @@ const entityMetadata: EntityMetadataMap = {
   imports: [
     CommonModule,
     AngularMaterialModule,
+    FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(QuestionsRoutes)
   ],

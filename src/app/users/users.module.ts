@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {
   EntityDataService,
@@ -51,6 +51,7 @@ const entityMetadata: EntityMetadataMap = {
     // RouterModule.forChild(UsersRoutes),
     StoreModule.forFeature('users', usersReducer),
     AngularMaterialModule,
+    FormsModule,
     ReactiveFormsModule,
   ],
   declarations: [

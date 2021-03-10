@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { QuestionsHttpService } from '../services/questions-http.service';
 import { QuestionEntityService } from '../services/question-entity.service';
+import { User } from '../../users/model/user';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'question-dialog',
@@ -22,6 +24,10 @@ export class EditQuestionDialogComponent {
   mode: 'create' | 'update';
 
   loading$: Observable<boolean>;
+
+  loggedInUser: User;
+
+  option: string;
 
   constructor(
     private fb: FormBuilder,
@@ -50,6 +56,10 @@ export class EditQuestionDialogComponent {
         iconUrl: ['', Validators.required],
       });
     }
+
+    // TEMPORARY Till I figure out where to stash the user
+    const userJSON = localStorage.getItem('user');
+    this.loggedInUser = JSON.parse(userJSON);
   }
 
   onClose() {
@@ -59,10 +69,17 @@ export class EditQuestionDialogComponent {
   onSave() {
     const question: Question = {
       ...this.question,
-      ...this.form.value,
     };
 
+console.log(this.option);
     if (this.mode == 'update') {
+
+      const option = this.question[this.option]
+      const newVotes = [
+        ...option.votes,
+        this.loggedInUser.id
+      ]
+
       this.questionsService.update(question);
 
       this.dialogRef.close();
@@ -73,5 +90,13 @@ export class EditQuestionDialogComponent {
         this.dialogRef.close();
       });
     }
+  }
+
+  getAvatarURL(author) {
+    return `https://kudo-assignment.s3-us-west-2.amazonaws.com/${author}.jpg`;
+  }
+
+  radioChange(event, question) {
+    this.option = event.value;
   }
 }

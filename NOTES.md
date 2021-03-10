@@ -4,6 +4,8 @@
 
 ### Todo
 
+- [ ] Login and Logout Toolbar Butons do not show up. app.component's isLoggedIn$ and isLoggedOut$ is not working. 
+
 - [x] Way of impersonating/logging in as an existing user.
 - [x] Know Who the logged in user is.
 - [x] Show logged in user their list of questions.
@@ -17,6 +19,8 @@
   - [x] View question details by clicking row.
   - [x] Input answers to question details.
   - [ ] Save a polling question
+    - [ ] Save Question
+    - [ ] Partial Update for user.
   - [ ] Only answer question once.
   - [ ] If answered use readonly dialog
   - [ ] Logged in user can read answered questions

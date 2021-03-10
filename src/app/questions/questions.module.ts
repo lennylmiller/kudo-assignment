@@ -13,11 +13,9 @@ import { EditQuestionDialogComponent } from './edit-question-dialog/edit-questio
 import { QuestionListComponent } from './question-list/question-list.component';
 import { QuestionsHttpService } from './services/questions-http.service';
 import { compareQuestions } from './model/question';
-import { compareAnswers } from './model/answer';
 import { QuestionEntityService } from './services/question-entity.service';
 import { QuestionsResolver } from './services/questions.resolver';
 import { QuestionsDataService } from './services/questions-data.service';
-import { AnswerEntityService } from './services/answer-entity.service';
 import { QuestionsRoutingModule } from './questions-routing.module';
 
 const entityMetadata: EntityMetadataMap = {
@@ -26,9 +24,6 @@ const entityMetadata: EntityMetadataMap = {
     entityDispatcherOptions: {
       optimisticUpdate: true,
     },
-  },
-  Answer: {
-    sortComparer: compareAnswers,
   },
 };
 
@@ -50,7 +45,6 @@ const entityMetadata: EntityMetadataMap = {
   providers: [
     QuestionsHttpService,
     QuestionEntityService,
-    AnswerEntityService,
     QuestionsResolver,
     QuestionsDataService,
   ],

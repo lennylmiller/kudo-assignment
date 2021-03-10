@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { first, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Question } from '../model/question';
@@ -56,23 +56,6 @@ export class HomeComponent implements OnInit {
         })
       )
     );
-
-    this.beginnerQuestions$ = this.questionsService.entities$.pipe(
-      map((questions) =>
-        questions.filter((question) => question.category == 'BEGINNER')
-      )
-    );
-
-    this.advancedQuestions$ = this.questionsService.entities$.pipe(
-      map((questions) =>
-        questions.filter((question) => question.category == 'ADVANCED')
-      )
-    );
-
-    this.promoTotal$ = this.questionsService.entities$.pipe(
-      map((questions) => questions.filter((question) => question.promo).length)
-    );
-
   }
 
   onAddQuestion() {

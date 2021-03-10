@@ -1,12 +1,15 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Question } from '../model/question';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { QuestionsHttpService } from '../services/questions-http.service';
+import { Observable, queueScheduler } from 'rxjs';
+
 import { QuestionEntityService } from '../services/question-entity.service';
+import { QuestionState } from '../../store/questions/questions.reducer';
+import { loggedInUser } from '../../store/auth/auth.selectors';
+import { Question } from '../model/question';
 import { User } from '../../users/model/user';
-import { ThrowStmt } from '@angular/compiler';
+import { AuthState } from '../../auth/reducers';
 
 @Component({
   selector: 'question-dialog',
@@ -14,7 +17,11 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./edit-question-dialog.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditQuestionDialogComponent {
+export class EditQuestionDialogComponent implements OnInit {
+
+  @Output()
+  currentUser: User;
+
   form: FormGroup;
 
   dialogTitle: string;
@@ -25,6 +32,8 @@ export class EditQuestionDialogComponent {
 
   loading$: Observable<boolean>;
 
+  loggedInUser$: Observable<AuthState>;
+
   loggedInUser: User;
 
   option: string;
@@ -33,17 +42,16 @@ export class EditQuestionDialogComponent {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<EditQuestionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data,
-    private questionsService: QuestionEntityService
+    private questionsService: QuestionEntityService,
+    private store: Store<QuestionState>
   ) {
     this.dialogTitle = data.dialogTitle;
     this.question = data.question;
     this.mode = data.mode;
 
     const formControls = {
-      description: ['', Validators.required],
-      category: ['', Validators.required],
-      longDescription: ['', Validators.required],
-      promo: ['', []],
+      optionOne: ['', Validators.required],
+      optionTwo: ['', Validators.required],
     };
 
     if (this.mode == 'update') {
@@ -52,14 +60,18 @@ export class EditQuestionDialogComponent {
     } else if (this.mode == 'create') {
       this.form = this.fb.group({
         ...formControls,
-        url: ['', Validators.required],
-        iconUrl: ['', Validators.required],
       });
     }
 
-    // TEMPORARY Till I figure out where to stash the user
     const userJSON = localStorage.getItem('user');
     this.loggedInUser = JSON.parse(userJSON);
+  }
+
+  ngOnInit(): void {
+    const userProfile = localStorage.getItem('user');
+    this.currentUser = JSON.parse(userProfile);
+
+    this.loggedInUser$ = this.store.pipe(select(loggedInUser));
   }
 
   onClose() {
@@ -71,22 +83,34 @@ export class EditQuestionDialogComponent {
       ...this.question,
     };
 
-console.log(this.option);
     if (this.mode == 'update') {
+      const selectedOption = this.question[this.option];
 
-      const option = this.question[this.option]
-      const newVotes = [
-        ...option.votes,
-        this.loggedInUser.id
-      ]
+      let partialQuestion;
 
-      this.questionsService.update(question);
+      if (this.option === 'optionOne') {
+        partialQuestion = {
+          id: question.id,
+          optionOne: {
+            text: this.question.optionOne.text,
+            votes: [...selectedOption.votes, this.loggedInUser.id]
+          }
+        }
+      } else { // optionTwo
+        partialQuestion = {
+          id: question.id,
+          optionOne: {
+            text: this.question.optionOne.text,
+            votes: [...selectedOption.votes, this.loggedInUser.id]
+          }
+        }
+      }
 
+      this.questionsService.update(partialQuestion);
       this.dialogRef.close();
+
     } else if (this.mode == 'create') {
       this.questionsService.add(question).subscribe((newQuestion) => {
-        // console.log('New Question', newQuestion);
-
         this.dialogRef.close();
       });
     }

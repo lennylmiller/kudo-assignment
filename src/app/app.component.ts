@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   loggedInUser$: Observable<AuthState>;
 
   @Output()
-  currentUser: User
+  currentUser: User;
 
   constructor(
     private router: Router,
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnChanges() {
-    console.log('ngOnChanges')
+    console.log('ngOnChanges');
   }
 
   ngOnInit() {
@@ -76,8 +76,7 @@ export class AppComponent implements OnInit {
 
     this.loggedInUser$ = this.store.pipe(select(loggedInUser));
 
-    this.loggedInUser$.subscribe(res => this.currentUser = res.user);
-
+    this.loggedInUser$.subscribe((res) => (this.currentUser = res.user));
   }
 
   logout() {

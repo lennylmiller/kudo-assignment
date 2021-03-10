@@ -3,23 +3,11 @@ export interface Option {
   text: string
 }
 export interface Question {
-  id: number;
+  id: string;
   author: string,
   timestamp: number;
   optionOne: Option,
   optionTwo: Option,
-
-
-  description: string;
-  longDescription?: string;
-  iconUrl: string;
-  category: string;
-  answersCount: number;
-  seqNo:number;
-  url:string;
-
-  questionListIcon: string;
-  promo: boolean;
 }
 
 

@@ -1,5 +1,5 @@
 
 
-import * as AuthActions from './auth.actions';
+import * as AuthActions from '../store/auth/auth.actions';
 
 export {AuthActions};

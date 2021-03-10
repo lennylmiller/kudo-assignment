@@ -9,10 +9,11 @@ import {
   Router,
 } from '@angular/router';
 import { AppState } from './reducers/';
-import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
-import { login, logout } from './auth/auth.actions';
+import { isLoggedIn, isLoggedOut, loggedInUser } from './auth/auth.selectors';
+import { login, logout } from './store/auth/auth.actions';
 import { User } from './auth/model/user.model';
 import { UsersDataService } from './users/services/users-data.service';
+import { AuthState } from './auth/reducers';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit {
 
   isLoggedOut$: Observable<boolean>;
 
-  loggedInUser$: Observable<User | User[]>;
+  loggedInUser$: Observable<AuthState>;
 
   @Output()
   currentUser: User
@@ -45,8 +46,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     const userProfile = localStorage.getItem('user');
     this.currentUser = JSON.parse(userProfile);
-
-
 
     if (userProfile) {
       this.store.dispatch(login({ user: this.currentUser }));
@@ -74,6 +73,11 @@ export class AppComponent implements OnInit {
     this.isLoggedIn$ = this.store.pipe(select(isLoggedIn));
 
     this.isLoggedOut$ = this.store.pipe(select(isLoggedOut));
+
+    this.loggedInUser$ = this.store.pipe(select(loggedInUser));
+
+    this.loggedInUser$.subscribe(res => this.currentUser = res.user);
+
   }
 
   logout() {

@@ -12,18 +12,20 @@ import { AuthActions } from '../action-types';
 
 export interface AuthState {
   user: User;
+  isLoggedIn: boolean;
 }
 
 export const initialAuthState: AuthState = {
   user: undefined,
+  isLoggedIn: false
 };
 
 export const authReducer = createReducer(
   initialAuthState,
-
   on(AuthActions.login, (state, action) => {
     return {
       user: action.user,
+      isLoggedIn: true
     };
   }),
 

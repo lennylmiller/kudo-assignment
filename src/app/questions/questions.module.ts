@@ -11,38 +11,18 @@ import { QuestionListComponent } from './question-list/question-list.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuestionsHttpService } from './services/questions-http.service';
-import { RouterModule, Routes } from '@angular/router';
 import {
   EntityDataService,
   EntityDefinitionService,
   EntityMetadataMap,
 } from '@ngrx/data';
-
-import { compareQuestions, Question } from './model/question';
-import { compareAnswers, Answer } from './model/answer';
-
+import { compareQuestions } from './model/question';
+import { compareAnswers } from './model/answer';
 import { QuestionEntityService } from './services/question-entity.service';
 import { QuestionsResolver } from './services/questions.resolver';
 import { QuestionsDataService } from './services/questions-data.service';
-
 import { AnswerEntityService } from './services/answer-entity.service';
-
-export const QuestionsRoutes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-    resolve: {
-      Questions: QuestionsResolver,
-    },
-  },
-  {
-    path: ':questionUrl',
-    component: QuestionComponent,
-    resolve: {
-      Questions: QuestionsResolver,
-    },
-  },
-];
+import { QuestionsRoutingModule } from './questions-routing.module';
 
 const entityMetadata: EntityMetadataMap = {
   Question: {
@@ -59,10 +39,10 @@ const entityMetadata: EntityMetadataMap = {
 @NgModule({
   imports: [
     CommonModule,
+    QuestionsRoutingModule,
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(QuestionsRoutes)
   ],
   declarations: [
     HomeComponent,
@@ -70,14 +50,14 @@ const entityMetadata: EntityMetadataMap = {
     QuestionsListItemComponent,
     EditQuestionDialogComponent,
     QuestionComponent,
-    QuestionListComponent
+    QuestionListComponent,
   ],
   exports: [
     HomeComponent,
     QuestionsCardListComponent,
     QuestionsListItemComponent,
     EditQuestionDialogComponent,
-    QuestionComponent
+    QuestionComponent,
   ],
   entryComponents: [EditQuestionDialogComponent],
   providers: [

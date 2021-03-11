@@ -1,17 +1,14 @@
 import { select, Store } from '@ngrx/store';
 import { ChangeDetectionStrategy, Component, Inject, OnInit, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, queueScheduler } from 'rxjs';
-
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { QuestionEntityService } from '../services/question-entity.service';
-import { UserEntityService } from './../../users/services/user-entity.service';
 import { QuestionState } from '../../store/questions/questions.reducer';
 import { loggedInUser } from '../../store/auth/auth.selectors';
 import { AuthState } from '../../auth/reducers';
 import { Question } from '../model/question';
 import { User } from '../../users/model/user';
-
 @Component({
   selector: 'question-dialog',
   templateUrl: './edit-question-dialog.component.html',
@@ -20,12 +17,11 @@ import { User } from '../../users/model/user';
 })
 export class EditQuestionDialogComponent implements OnInit {
 
-  @Output()
+  dialogTitle: string;
+
   currentUser: User;
 
   form: FormGroup;
-
-  dialogTitle: string;
 
   question: Question;
 
@@ -35,8 +31,6 @@ export class EditQuestionDialogComponent implements OnInit {
 
   loggedInUser$: Observable<AuthState>;
 
-  loggedInUser: User;
-
   option: string;
 
   constructor(
@@ -44,36 +38,27 @@ export class EditQuestionDialogComponent implements OnInit {
     private dialogRef: MatDialogRef<EditQuestionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data,
     private questionsService: QuestionEntityService,
-    private store: Store<QuestionState>,
-    private usersService: UserEntityService
-  ) {
+    private store: Store<QuestionState>
+  ) // private usersService: UserEntityService KEEP IN CODE - There is a bug in the backendfor updating partial user
+  {
     this.dialogTitle = data.dialogTitle;
     this.question = data.question;
     this.mode = data.mode;
-
-    const formControls = {
-      optionOne: ['', Validators.required],
-      optionTwo: ['', Validators.required],
-    };
+    this.form = this.fb.group({
+      optionOne: [, { validators: [Validators.required], updatOn: 'change' }],
+      optionTwo: [, { validators: [Validators.required], updatOn: 'change' }],
+    })
 
     if (this.mode == 'update') {
-      this.form = this.fb.group(formControls);
       this.form.patchValue({ ...data.question });
     } else if (this.mode == 'create') {
-      this.form = this.fb.group({
-        ...formControls,
-      });
-    }
 
-    const userJSON = localStorage.getItem('user');
-    this.loggedInUser = JSON.parse(userJSON);
+    }
   }
 
   ngOnInit(): void {
-    const userProfile = localStorage.getItem('user');
-    this.currentUser = JSON.parse(userProfile);
-
     this.loggedInUser$ = this.store.pipe(select(loggedInUser));
+    this.loggedInUser$.subscribe((res) => (this.currentUser = res.user));
   }
 
   onClose() {
@@ -95,42 +80,52 @@ export class EditQuestionDialogComponent implements OnInit {
           id: question.id,
           optionOne: {
             text: this.question.optionOne.text,
-            votes: [...selectedOption.votes, this.loggedInUser.id]
-          }
-        }
-      } else { // optionTwo
+            votes: [...selectedOption.votes, this.currentUser.id],
+          },
+        };
+      } else {
+        // optionTwo
         partialQuestion = {
           id: question.id,
           optionOne: {
             text: this.question.optionOne.text,
-            votes: [...selectedOption.votes, this.loggedInUser.id]
-          }
-        }
+            votes: [...selectedOption.votes, this.currentUser.id],
+          },
+        };
       }
-
-      console.log('this.loggedInUser');
 
       this.questionsService.update(partialQuestion);
 
-      // MOVE THIS TO AN EFECT
-      const key = this.question.id;
-      const value = this.option;
-      let answer = {};
-
-      answer[key] = value;
-      const partialUser = {
-        id: 'rashmi',
-        answers: Object.assign({}, this.loggedInUser.answers, answer)
-      }
-      // The backend server doesn't accept this???
-      // this.usersService.update(partialUser);
+      // // MOVE THIS TO AN EFECT
+      // const key = this.question.id;
+      // const value = this.option;
+      // let answer = {};
+      // answer[key] = value;
+      // const partialUser = {
+      //   id: this.loggedInUser.id,
+      //   answers: Object.assign({}, this.loggedInUser.answers, answer),
+      // };
+      // this.usersService.update(partialUser);  // KEEP IN CODE - There is a bug in the backendfor updating partial user
 
       this.dialogRef.close();
-
-
     } else if (this.mode == 'create') {
 
-      this.questionsService.add(question).subscribe((newQuestion) => {
+      const newQuestion = {
+        id: this.getRandomString(20),
+        author: this.currentUser.id,
+        timestamp: Date.now(),
+        optionOne: {
+          votes: [],
+          text: this.form.get('optionOne').value,
+        },
+        optionTwo: {
+          votes: [],
+          text: this.form.get('optionTwo').value,
+        },
+      };
+
+      this.questionsService.add(newQuestion).subscribe((newQuestion) => {
+        console.log('newQuestion', newQuestion);
         this.dialogRef.close();
       });
     }
@@ -140,7 +135,23 @@ export class EditQuestionDialogComponent implements OnInit {
     return `https://kudo-assignment.s3-us-west-2.amazonaws.com/${author}.jpg`;
   }
 
-  radioChange(event, question) {
+  radioChange(event) {
     this.option = event.value;
+  }
+
+  get isUpdate() {
+    return this.mode === 'update';
+  }
+
+  getRandomString(length) {
+    var randomChars =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    for (var i = 0; i < length; i++) {
+      result += randomChars.charAt(
+        Math.floor(Math.random() * randomChars.length)
+      );
+    }
+    return result;
   }
 }

@@ -56,19 +56,14 @@ export class QuestionListComponent implements OnInit {
   @Output()
   currentUser: User;
 
-  constructor(
-    private dialog: MatDialog,
-    private store: Store<AppState>,
-  ) {}
+  constructor(private dialog: MatDialog, private store: Store<AppState>) {}
 
   getAvatarURL(author) {
     return `https://kudo-assignment.s3-us-west-2.amazonaws.com/${author}.jpg`;
   }
 
   ngOnInit(): void {
-
     this.loggedInUser$ = this.store.pipe(select(loggedInUser));
-
     this.loggedInUser$.subscribe((res) => (this.currentUser = res.user));
   }
 
@@ -84,10 +79,10 @@ export class QuestionListComponent implements OnInit {
 
     const Component = isAnswered
       ? ReadQuestionDialogComponent
-      : EditQuestionDialogComponent
+      : EditQuestionDialogComponent;
 
     this.dialog
-      .open(<any>Component , dialogConfig)
+      .open(<any>Component, dialogConfig)
       .afterClosed()
       .subscribe(() => this.questionChanged.emit());
   }

@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
     const dialogConfig = defaultDialogConfig();
 
     dialogConfig.data = {
-      dialogTitle: 'Create Question',
+      dialogTitle: 'Would You Rather',
       mode: 'create',
     };
 

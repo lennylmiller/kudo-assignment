@@ -1,12 +1,12 @@
 <h2 mat-dialog-title>{{ dialogTitle }}</h2>
 
 <mat-dialog-content>
-  <ng-container *ngIf="form">
+  <ng-container>
     <div class="spinner-container" *ngIf="loading$ | async">
       <mat-spinner></mat-spinner>
     </div>
 
-    <ng-container [formGroup]="form">
+    <ng-container>
       <mat-card class="example-card">
         <img
           class="boxed-frame"
@@ -17,13 +17,19 @@
         <mat-card-content>
           <h1>Would you rather?</h1>
           <mat-radio-group>
-            <div [ngClass]="{'selected': isSelected('optionOne')}">
-              <h2> {{ question.optionOne.text }}</h2>
-              <h4>{{ stats.optionOneStats.total }} voted which is {{ stats.optionOneStats.percentage }}%</h4>
+            <div [ngClass]="{ selected: isSelected('optionOne') }">
+              <h2>{{ question.optionOne.text }}</h2>
+              <h4>
+                {{ stats.optionOneStats.total }} voted which is
+                {{ stats.optionOneStats.percentage }}%
+              </h4>
             </div>
-            <div [ngClass]="{'selected': isSelected('optionTwo')}">
+            <div [ngClass]="{ selected: isSelected('optionTwo') }">
               <h2>{{ question.optionTwo.text }}</h2>
-              <h4>{{ stats.optionTwoStats.total }} voted which is {{ stats.optionTwoStats.percentage }}%</h4>
+              <h4>
+                {{ stats.optionTwoStats.total }} voted which is
+                {{ stats.optionTwoStats.percentage }}%
+              </h4>
             </div>
           </mat-radio-group>
         </mat-card-content>

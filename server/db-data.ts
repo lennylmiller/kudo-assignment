@@ -58,8 +58,9 @@ export const imageMaps = {
  'am8ehyc8byjqgar0jgpub9' : 'https://kudo-assignment.s3-us-west-2.amazonaws.com/telekinetic-or-telepathic.jpg' ,
  'loxhs1bqm25b708cmbf3g'  : 'https://kudo-assignment.s3-us-west-2.amazonaws.com/backend-or-front-end-developer.jpg' ,
  'vthrdm985a262al8qx3do'  : 'https://kudo-assignment.s3-us-west-2.amazonaws.com/fifty-for-you-five-hundred-for-a-friend.jpg' ,
-
- 'xj352vofupe1dqz9emx13r' : 'https://kudo-assignment.s3-us-west-2.amazonaws.com/javaScript-or-swift.jpg'
+ 'xj352vofupe1dqz9emx13r' : 'https://kudo-assignment.s3-us-west-2.amazonaws.com/javaScript-or-swift.jpg',
+ 'newUserOne'             : 'https://kudo-assignment.s3-us-west-2.amazonaws.com/survey-clipart.jpg',
+ 'newUserTwo'             : 'https://kudo-assignment.s3-us-west-2.amazonaws.com/index.jpg',
 }
 
 export const QUESTIONS: any = {

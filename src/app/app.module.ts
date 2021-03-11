@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularMaterialModule } from './angular-material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,8 +35,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     BrowserModule,
-    AngularMaterialModule,
     BrowserAnimationsModule,
+    AngularMaterialModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     UsersModule,
     HttpClientModule,

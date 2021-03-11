@@ -5,34 +5,59 @@
     <div class="spinner-container" *ngIf="loading$ | async">
       <mat-spinner></mat-spinner>
     </div>
-
-    <ng-container [formGroup]="form">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <img
-            class="avatar"
-            mat-card-image
-            src="{{ getAvatarURL(question.author) }}"
-            alt="{{ question.author }}"
+    <form [formGroup]="form">
+      <ng-container *ngIf="!isUpdate">
+        <!-- Option One-->
+        <mat-form-field class="example-full-width">
+          <mat-label>Option One</mat-label>
+          <input
+            matInput
+            placeholder="I am a log jammer"
+            formControlName="optionOne"
           />
-          <mat-card-title>{{ question.author }}</mat-card-title>
-          <mat-card-subtitle>{{
-            question.timestamp | date: "short"
-          }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <h1>Would you rather?</h1>
+        </mat-form-field>
 
+        <!-- Option Two-->
+        <mat-form-field class="example-full-width">
+          <mat-label>Option Two</mat-label>
+          <input
+            matInput
+            placeholder="jam a log eater"
+            formControlName="optionTwo"
+          />
+        </mat-form-field>
+      </ng-container>
 
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="optionOne" (change)="radioChange($event,question)"><h2>{{ question.optionOne.text }}</h2></mat-radio-button>
-            <p>OR</p>
-            <mat-radio-button value="optionTwo" (change)="radioChange($event,question)"><h2>{{ question.optionTwo.text }}</h2></mat-radio-button>
-          </mat-radio-group>
+      <ng-container *ngIf="isUpdate">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <img
+              class="avatar"
+              mat-card-image
+              src="{{ getAvatarURL(question.author) }}"
+              alt="{{ question.author }}"
+            />
+            <mat-card-title>{{ question.author }}</mat-card-title>
+            <mat-card-subtitle>{{
+              question.timestamp | date: "short"
+            }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h1>Would you rather?</h1>
 
-        </mat-card-content>
-      </mat-card>
-    </ng-container>
+            <mat-radio-group>
+              <mat-radio-button value="optionOne" (change)="radioChange($event)"
+                ><h2>{{ question.optionOne.text }}</h2></mat-radio-button
+              >
+              <h3>OR</h3>
+              <mat-radio-button value="optionTwo" (change)="radioChange($event)"
+                ><h2>{{ question.optionTwo.text }}</h2></mat-radio-button
+              >
+            </mat-radio-group>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+    </form>
   </ng-container>
 </mat-dialog-content>
 
@@ -40,8 +65,7 @@
   <button mat-raised-button (click)="onClose()">Close</button>
 
   <button
-    mat-raised-button
-    color="primary"
+    mat-raised-button color="primary"
     [disabled]="!form?.valid || (this.loading$ | async)"
     (click)="onSave()"
   >

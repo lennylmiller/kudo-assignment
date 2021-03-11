@@ -8,29 +8,23 @@
 
     <ng-container [formGroup]="form">
       <mat-card class="example-card">
-        <mat-card-header>
-          <img
-            class="boxed-frame"
-            mat-card-image
-            src="{{ getQuestionImageURL(question.id) }}"
-            alt="{{ question.id }}"
-          />
-        </mat-card-header>
+        <img
+          class="boxed-frame"
+          mat-card-image
+          src="{{ getQuestionImageURL(question.id) }}"
+          alt="{{ question.id }}"
+        />
         <mat-card-content>
           <h1>Would you rather?</h1>
-
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button
-              value="optionOne"
-              (change)="radioChange($event, question)"
-              ><h2>{{ question.optionOne.text }}</h2></mat-radio-button
-            >
-            <p>OR</p>
-            <mat-radio-button
-              value="optionTwo"
-              (change)="radioChange($event, question)"
-              ><h2>{{ question.optionTwo.text }}</h2></mat-radio-button
-            >
+          <mat-radio-group>
+            <div [ngClass]="{'selected': isSelected('optionOne')}">
+              <h2> {{ question.optionOne.text }}</h2>
+              <h4>{{ stats.optionOneStats.total }} voted which is {{ stats.optionOneStats.percentage }}%</h4>
+            </div>
+            <div [ngClass]="{'selected': isSelected('optionTwo')}">
+              <h2>{{ question.optionTwo.text }}</h2>
+              <h4>{{ stats.optionTwoStats.total }} voted which is {{ stats.optionTwoStats.percentage }}%</h4>
+            </div>
           </mat-radio-group>
         </mat-card-content>
       </mat-card>

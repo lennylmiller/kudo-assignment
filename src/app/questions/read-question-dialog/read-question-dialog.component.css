@@ -19,8 +19,6 @@ mat-radio-group {
 
 .boxed-frame {
   vertical-align: middle;
-  width: 200px;
-  height: 200px;
   /* border-radius: 50%; */
   padding-top: 10px;
   padding-bottom: 10px;
@@ -32,4 +30,8 @@ mat-radio-group {
   border-radius: 50%;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.selected {
+  background-color: rgb(227, 185, 20);
 }

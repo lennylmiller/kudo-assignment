@@ -6,7 +6,8 @@
 
 - [ ] Login and Logout Toolbar Butons do not show up. app.component's isLoggedIn$ and isLoggedOut$ is not working. 
 - [ ] Saving the user while answering question is BUGGED.  
-
+- [ ] Scale the images, they are too big.
+----------------------------------------------
 - [x] Way of impersonating/logging in as an existing user.
 - [x] Know Who the logged in user is.
 - [x] Show logged in user their list of questions.
@@ -26,11 +27,10 @@
   - [x] Only answer question once.
   - [x] If answered use readonly dialog
 
-  - [ ] Logged in user can read answered questions
-    - [ ] Users response should be recorded and clearly visible on question details page.
-    - [ ] Immediately after answering a question, it should switch to the Answered tab.
+  - [x] Logged in user can read answered questions
+    - [x] Users response should be recorded and clearly visible on question details page.
+    - [x] Immediately after answering a question, it should switch to the Answered tab.
     - [ ] Upon answering a poll, switch to finished question popup.
-    - [ ] .
 
 
 - [ ] Create a new question "Would you rather ________________ or _______________".

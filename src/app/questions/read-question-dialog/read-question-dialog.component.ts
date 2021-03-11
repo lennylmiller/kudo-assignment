@@ -148,4 +148,28 @@ export class ReadQuestionDialogComponent implements OnInit {
   radioChange(event, question) {
     this.option = event.value;
   }
+
+  @Output()
+  isSelected(option: string) {
+    return this.question[option].votes.includes(this.currentUser.id);
+  }
+
+  @Output()
+  get stats() {
+    const votesOne =  this.question.optionOne.votes.length;
+    const votesTwo =  this.question.optionTwo.votes.length;
+    const votesTotal = votesOne + votesTwo;
+    const votesOnePercentage = (votesTotal / votesOne) * 100;
+    const votesTwoPercentage = (votesTotal / votesTwo) * 100;
+    return {
+      optionOneStats: {
+        total: votesOne,
+        percentage: votesOnePercentage
+      },
+      optionTwoStats: {
+        total: votesTwo,
+        percentage: votesTwoPercentage
+      },
+    }
+  }
 }

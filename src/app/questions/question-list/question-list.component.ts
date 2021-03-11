@@ -87,7 +87,7 @@ export class QuestionListComponent implements OnInit {
       : EditQuestionDialogComponent
 
     this.dialog
-      .open(ReadQuestionDialogComponent, dialogConfig)
+      .open(<any>Component , dialogConfig)
       .afterClosed()
       .subscribe(() => this.questionChanged.emit());
   }

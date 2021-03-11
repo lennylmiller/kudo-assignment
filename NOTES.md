@@ -17,7 +17,7 @@
 - [x] Only show logged in user questions in /questions.
 - [x] Toggle between answered and unanswered questions.
 
-- [ ] Logged in user can answer unanswered questions
+- [x] Logged in user can answer unanswered questions
   - [x] View question details by clicking row.
   - [x] Input answers to question details.
   - [x] Save a polling question
@@ -30,7 +30,7 @@
   - [x] Logged in user can read answered questions
     - [x] Users response should be recorded and clearly visible on question details page.
     - [x] Immediately after answering a question, it should switch to the Answered tab.
-    - [ ] Upon answering a poll, switch to finished question popup.
+    - [x] Upon answering a poll, switch to finished question popup.
 
 
 - [ ] Create a new question "Would you rather ________________ or _______________".

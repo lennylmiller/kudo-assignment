@@ -1,11 +1,11 @@
-import {Request, Response} from 'express';
-import {USERS} from './db-data';
+import { Request, Response } from 'express';
+import { USERS } from './db-data';
 
 export function getAllUsers(req: Request, res: Response) {
   console.log('Retrieving users data ...');
 
   setTimeout(() => {
-    res.status(200).json({payload: Object.values(USERS)});
+    res.status(200).json({ payload: Object.values(USERS) });
   }, 1000);
 }
 

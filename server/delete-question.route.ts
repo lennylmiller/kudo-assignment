@@ -1,8 +1,7 @@
-import {Request, Response} from 'express';
-import {QUESTIONS} from './db-data';
+import { Request, Response } from 'express';
+import { QUESTIONS } from './db-data';
 
 export function deleteQuestion(req: Request, res: Response) {
-
   console.log('Deleting question ...');
 
   const id = req.params['id'];
@@ -12,10 +11,6 @@ export function deleteQuestion(req: Request, res: Response) {
   delete QUESTIONS[id];
 
   setTimeout(() => {
-
-    res.status(200).json({id});
-
+    res.status(200).json({ id });
   }, 2000);
-
 }
-

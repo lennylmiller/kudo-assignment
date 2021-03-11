@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { select, Store } from '@ngrx/store';
 import {
   animate,
   state,
@@ -7,11 +7,16 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-
+import { loggedInUser } from '../../store/auth/auth.selectors';
+import { AppState } from '../../reducers';
 import { Question } from '../model/question';
 import { defaultDialogConfig } from '../shared/default-dialog-config';
 import { MatDialog } from '@angular/material/dialog';
 import { EditQuestionDialogComponent } from '../edit-question-dialog/edit-question-dialog.component';
+import { ReadQuestionDialogComponent } from '../read-question-dialog/read-question-dialog.component';
+import { User } from '../../auth/model/user.model';
+import { Observable } from 'rxjs';
+import { AuthState } from '../../auth/reducers';
 
 @Component({
   selector: 'question-list',
@@ -46,25 +51,52 @@ export class QuestionListComponent implements OnInit {
     'timestamp',
   ];
 
-  constructor(private dialog: MatDialog) {}
+  loggedInUser$: Observable<AuthState>;
+
+  @Output()
+  currentUser: User;
+
+  constructor(
+    private dialog: MatDialog,
+    private store: Store<AppState>,
+  ) {}
 
   getAvatarURL(author) {
-    return `https://kudo-assignment.s3-us-west-2.amazonaws.com/${author}.jpg`
+    return `https://kudo-assignment.s3-us-west-2.amazonaws.com/${author}.jpg`;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this.loggedInUser$ = this.store.pipe(select(loggedInUser));
+
+    this.loggedInUser$.subscribe((res) => (this.currentUser = res.user));
+  }
 
   editQuestion(question: Question) {
+    const isAnswered = this.isAnswered(question);
+
     const dialogConfig = defaultDialogConfig();
-    // console.log({ question });
+    console.log({ question, isAnswered });
     dialogConfig.data = {
       question,
       mode: 'update',
     };
 
+    const Component = isAnswered
+      ? ReadQuestionDialogComponent
+      : EditQuestionDialogComponent
+
     this.dialog
-      .open(EditQuestionDialogComponent, dialogConfig)
+      .open(ReadQuestionDialogComponent, dialogConfig)
       .afterClosed()
       .subscribe(() => this.questionChanged.emit());
+  }
+
+  isAnswered(question: Question): boolean {
+    let answered: boolean;
+    answered = question.optionOne.votes.includes(this.currentUser.id);
+    answered ||= question.optionTwo.votes.includes(this.currentUser.id);
+
+    return answered;
   }
 }

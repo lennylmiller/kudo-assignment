@@ -5,6 +5,7 @@
 ### Todo
 
 - [ ] Login and Logout Toolbar Butons do not show up. app.component's isLoggedIn$ and isLoggedOut$ is not working. 
+- [ ] Saving the user while answering question is BUGGED.  
 
 - [x] Way of impersonating/logging in as an existing user.
 - [x] Know Who the logged in user is.
@@ -18,15 +19,18 @@
 - [ ] Logged in user can answer unanswered questions
   - [x] View question details by clicking row.
   - [x] Input answers to question details.
-  - [ ] Save a polling question
-    - [ ] Save Question
-    - [ ] Partial Update for user.
-  - [ ] Only answer question once.
-  - [ ] If answered use readonly dialog
+  - [x] Save a polling question
+    - [x] Save Question
+    - [x] Partial Update for user. ** SEE BUGGED
+
+  - [x] Only answer question once.
+  - [x] If answered use readonly dialog
+
   - [ ] Logged in user can read answered questions
-  - [ ] Users response should be recorded and clearly visible on question details page.
-  - [ ] Immediately after answering a question, it should switch to the Answered tab.
-  - [ ] Upon answering a poll, switch to finished question popup.
+    - [ ] Users response should be recorded and clearly visible on question details page.
+    - [ ] Immediately after answering a question, it should switch to the Answered tab.
+    - [ ] Upon answering a poll, switch to finished question popup.
+    - [ ] .
 
 
 - [ ] Create a new question "Would you rather ________________ or _______________".

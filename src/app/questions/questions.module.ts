@@ -17,6 +17,7 @@ import { QuestionEntityService } from './services/question-entity.service';
 import { QuestionsResolver } from './services/questions.resolver';
 import { QuestionsDataService } from './services/questions-data.service';
 import { QuestionsRoutingModule } from './questions-routing.module';
+import { ReadQuestionDialogComponent } from './read-question-dialog/read-question-dialog.component';
 
 const entityMetadata: EntityMetadataMap = {
   Question: {
@@ -39,8 +40,9 @@ const entityMetadata: EntityMetadataMap = {
     HomeComponent,
     EditQuestionDialogComponent,
     QuestionListComponent,
+    ReadQuestionDialogComponent,
   ],
-  exports: [HomeComponent, EditQuestionDialogComponent, QuestionListComponent],
+  exports: [HomeComponent, EditQuestionDialogComponent, QuestionListComponent, ReadQuestionDialogComponent],
   entryComponents: [EditQuestionDialogComponent],
   providers: [
     QuestionsHttpService,

@@ -11,14 +11,15 @@ import { loggedInUser } from '../../store/auth/auth.selectors';
 import { AuthState } from '../../auth/reducers';
 import { Question } from '../model/question';
 import { User } from '../../users/model/user';
+import { imageMaps } from './../../../../server/db-data';
 
 @Component({
   selector: 'question-dialog',
-  templateUrl: './edit-question-dialog.component.html',
-  styleUrls: ['./edit-question-dialog.component.css'],
+  templateUrl: './read-question-dialog.component.html',
+  styleUrls: ['./read-question-dialog.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditQuestionDialogComponent implements OnInit {
+export class ReadQuestionDialogComponent implements OnInit {
 
   @Output()
   currentUser: User;
@@ -41,7 +42,7 @@ export class EditQuestionDialogComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<EditQuestionDialogComponent>,
+    private dialogRef: MatDialogRef<ReadQuestionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data,
     private questionsService: QuestionEntityService,
     private store: Store<QuestionState>,
@@ -136,8 +137,12 @@ export class EditQuestionDialogComponent implements OnInit {
     }
   }
 
-  getAvatarURL(author) {
+  getAvatarURL(author: string) {
     return `https://kudo-assignment.s3-us-west-2.amazonaws.com/${author}.jpg`;
+  }
+
+  getQuestionImageURL(id: string) {
+    return imageMaps[id];
   }
 
   radioChange(event, question) {

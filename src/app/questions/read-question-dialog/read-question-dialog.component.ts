@@ -57,7 +57,11 @@ export class ReadQuestionDialogComponent implements OnInit {
   }
 
   getQuestionImageURL(id: string) {
-    return imageMaps[id];
+    let imageURL = imageMaps[id];
+
+    return !imageURL
+      ? imageMaps['newUserOne']
+      : imageMaps[id]
   }
 
   isSelected(option: string) {

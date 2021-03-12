@@ -17,14 +17,18 @@
         <mat-card-content>
           <h1>Would you rather?</h1>
           <mat-radio-group>
-            <div [ngClass]="{ selected: isSelected('optionOne') }">
+            <div
+              class="option"
+              [ngClass]="{ selected: isSelected('optionOne') }">
               <h2>{{ question.optionOne.text }}</h2>
               <h4>
                 {{ stats.optionOneStats.total }} voted which is
                 {{ stats.optionOneStats.percentage }}%
               </h4>
             </div>
-            <div [ngClass]="{ selected: isSelected('optionTwo') }">
+            <div
+              class="option"
+              [ngClass]="{ selected: isSelected('optionTwo') }">
               <h2>{{ question.optionTwo.text }}</h2>
               <h4>
                 {{ stats.optionTwoStats.total }} voted which is

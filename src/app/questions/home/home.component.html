@@ -1,14 +1,16 @@
 <div class="questions-panel">
   <div class="header">
     <h2 class="title">Poll Questions</h2>
-
-    <button mat-mini-fab>
-      <mat-icon class="add-course-btn" (click)="onAddQuestion()">add</mat-icon>
-    </button>
   </div>
 
   <mat-tab-group>
     <mat-tab label="Unanswered">
+      <button
+        (click)="onAddQuestion()"
+        class="create-question"
+        mat-raised-button color="accent">
+        Create Question
+      </button>
       <question-list
         (questionChanged)="reload()"
         [questions]="unAnsweredQuestions$ | async"

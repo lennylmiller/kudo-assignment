@@ -15,7 +15,6 @@ export class QuestionsHttpService {
     return this.http.get<Question>(`/api/questions/${QuestionUrl}`);
   }
 
-
   saveQuestion(QuestionId: string | number, changes: Partial<Question>) {
     return this.http.put('/api/Question/' + QuestionId, changes);
   }

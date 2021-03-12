@@ -58,7 +58,7 @@ mat-row.example-element-row:active {
   padding-bottom: 10px;
 }
 
-
-mat-header-cell, mat-cell {
+mat-header-cell,
+mat-cell {
   justify-content: center;
 }

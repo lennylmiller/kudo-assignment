@@ -42,7 +42,12 @@ const entityMetadata: EntityMetadataMap = {
     QuestionListComponent,
     ReadQuestionDialogComponent,
   ],
-  exports: [HomeComponent, EditQuestionDialogComponent, QuestionListComponent, ReadQuestionDialogComponent],
+  exports: [
+    HomeComponent,
+    EditQuestionDialogComponent,
+    QuestionListComponent,
+    ReadQuestionDialogComponent,
+  ],
   entryComponents: [EditQuestionDialogComponent],
   providers: [
     QuestionsHttpService,

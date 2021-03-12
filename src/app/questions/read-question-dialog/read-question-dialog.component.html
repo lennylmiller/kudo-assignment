@@ -19,7 +19,8 @@
           <mat-radio-group>
             <div
               class="option"
-              [ngClass]="{ selected: isSelected('optionOne') }">
+              [ngClass]="{ selected: isSelected('optionOne') }"
+            >
               <h2>{{ question.optionOne.text }}</h2>
               <h4>
                 {{ stats.optionOneStats.total }} voted which is
@@ -28,7 +29,8 @@
             </div>
             <div
               class="option"
-              [ngClass]="{ selected: isSelected('optionTwo') }">
+              [ngClass]="{ selected: isSelected('optionTwo') }"
+            >
               <h2>{{ question.optionTwo.text }}</h2>
               <h4>
                 {{ stats.optionTwoStats.total }} voted which is

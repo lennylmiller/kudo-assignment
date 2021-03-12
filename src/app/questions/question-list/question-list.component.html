@@ -4,7 +4,11 @@
   <ng-container matColumnDef="author">
     <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <img [src]="getAvatarURL(element.author)" alt="User Avatar" class="avatar" />
+      <img
+        [src]="getAvatarURL(element.author)"
+        alt="User Avatar"
+        class="avatar"
+      />
       <!-- {{element.author}} -->
     </mat-cell>
   </ng-container>
@@ -12,9 +16,10 @@
   <!-- First Option Column -->
   <ng-container matColumnDef="firstOption">
     <mat-header-cell *matHeaderCellDef> First Option </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{ element.optionOne.text }} </mat-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.optionOne.text }}
+    </mat-cell>
   </ng-container>
-
 
   <!-- Or Column -->
   <ng-container matColumnDef="or">
@@ -25,15 +30,23 @@
   <!-- Second Option Column -->
   <ng-container matColumnDef="secondOption">
     <mat-header-cell *matHeaderCellDef> Second Option </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{ element.optionTwo.text }} </mat-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.optionTwo.text }}
+    </mat-cell>
   </ng-container>
 
   <!-- Timestamp Column -->
   <ng-container matColumnDef="timestamp">
     <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{ element.timestamp | date: 'short'}} </mat-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.timestamp | date: "short" }}
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row class="example-element-row" *matRowDef="let question; columns: displayedColumns;" (click)="editQuestion(question)"></mat-row>
+  <mat-row
+    class="example-element-row"
+    *matRowDef="let question; columns: displayedColumns"
+    (click)="editQuestion(question)"
+  ></mat-row>
 </mat-table>

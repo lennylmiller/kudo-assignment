@@ -55,7 +55,7 @@ Users should be ordered in descending order based on the sum of the number of qu
 The user should be able to navigate to the leaderboard, to a specific question, and to the form that allows the user to create a new poll both from within the app and by typing in the address into the address bar. To make sure we’re showing the data that is relevant to the user, the application should require the user to be signed in order to access those pages.
 ### Todo List
 
-- [ ] Saving the user while answering question is SERVER BUGGED?.  
+- [ ] Saving the user while answering a question is is blocked because the server is bugged. **SERVER BUGGED**.  
 - [x] Show 404 for a question that doesn't exist.
   - [x] The design I chose uses modal dialogs so we may not need this, lets discuss it.
 - [x] Way of impersonating/logging in as an existing user.
@@ -71,7 +71,7 @@ The user should be able to navigate to the leaderboard, to a specific question, 
 - [x] Input answers to question details.
 - [x] Save a polling question
 - [x] Save Question
-- [x] Partial Update for user. ** SEE BUGGED
+- [ ] Partial Update for user is blocked by **SERVER BUGGED**.
 - [x] Only answer question once.
 - [x] If answered use readonly dialog
 - [x] Logged in user can read answered questions

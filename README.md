@@ -84,12 +84,12 @@ The user should be able to navigate to the leaderboard, to a specific question, 
 
 - [x] Login and Logout Toolbar Butons do not show up. app.component's
 - [x] Match spinner background with other background
-- [ ] Cleanup 
+- [x] Cleanup 
 ---
 
 ## Would like a do-over
- - [ ] Centralize the store artifacts, 
  - [x] Have the auth service use the users/model
+ - [ ] Centralize the store artifacts, 
  - [ ] combine auth with user (store)
 ### Assets
 

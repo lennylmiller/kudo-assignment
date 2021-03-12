@@ -77,6 +77,7 @@ export class AppComponent implements OnInit {
     this.loggedInUser$ = this.store.pipe(select(loggedInUser));
 
     this.loggedInUser$.subscribe((res) => (this.currentUser = res.user));
+
   }
 
   logout() {

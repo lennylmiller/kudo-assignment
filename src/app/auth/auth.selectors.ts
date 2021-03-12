@@ -12,13 +12,12 @@ export const isLoggedIn = createSelector(
 
 );
 
+export const isLoggedOut = createSelector(
+    isLoggedIn,
+    loggedIn => !loggedIn
+);
+
 export const loggedInUser = createSelector(
     selectAuthState,
     user =>  user
-);
-
-export const isLoggedOut = createSelector(
-    isLoggedIn,
-    loggedIn => !loggedIn,
-    user => user
 );

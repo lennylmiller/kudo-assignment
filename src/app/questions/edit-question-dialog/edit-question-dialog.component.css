@@ -25,3 +25,7 @@ mat-radio-group {
 .or-separator {
   text-align: center;
 }
+
+mat-radio-button > h2 {
+  font-style:italic;
+}

@@ -14,7 +14,7 @@ import { defaultDialogConfig } from '../shared/default-dialog-config';
 import { MatDialog } from '@angular/material/dialog';
 import { EditQuestionDialogComponent } from '../edit-question-dialog/edit-question-dialog.component';
 import { ReadQuestionDialogComponent } from '../read-question-dialog/read-question-dialog.component';
-import { User } from '../../auth/model/user.model';
+import { User } from '../../users/model/user';
 import { Observable } from 'rxjs';
 import { AuthState } from '../../auth/reducers';
 

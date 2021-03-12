@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '../../auth/model/user.model';
+import { User } from '../../users/model/user';
 
 export const checkAuth = createAction('[Auth] checkAuth');
 export const checkAuthComplete = createAction(

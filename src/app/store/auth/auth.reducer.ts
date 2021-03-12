@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { User } from '../../auth/model/user.model';
+import { User } from '../../users/model/user';
 import { AuthActions } from '../../auth/action-types';
 
 export interface AuthState {

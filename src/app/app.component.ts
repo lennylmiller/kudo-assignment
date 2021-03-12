@@ -11,7 +11,7 @@ import {
 import { AppState } from './reducers/';
 import { isLoggedIn, isLoggedOut, loggedInUser } from './auth/auth.selectors';
 import { login, logout } from './store/auth/auth.actions';
-import { User } from './auth/model/user.model';
+import { User } from './users/model/user';
 import { UsersDataService } from './users/services/users-data.service';
 import { AuthState } from './auth/reducers';
 

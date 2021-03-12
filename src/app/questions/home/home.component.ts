@@ -7,7 +7,7 @@ import { Question } from '../model/question';
 import { defaultDialogConfig } from '../shared/default-dialog-config';
 import { QuestionEntityService } from '../services/question-entity.service';
 import { EditQuestionDialogComponent } from '../edit-question-dialog/edit-question-dialog.component';
-import { User } from '../../auth/model/user.model';
+import { User } from '../../users/model/user';
 
 @Component({
   selector: 'home',

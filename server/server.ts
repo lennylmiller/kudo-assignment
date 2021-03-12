@@ -11,8 +11,6 @@ import { getAllUsers, getUserByUrl } from './get-users.routes';
 import { saveUser } from './save-user.route';
 import { createUser } from './create-user.route';
 
-
-
 const bodyParser = require('body-parser');
 
 const app: Application = express();

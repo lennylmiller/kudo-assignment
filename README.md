@@ -52,6 +52,10 @@ Users should be ordered in descending order based on the sum of the number of qu
 
 The user should be able to navigate to the leaderboard, to a specific question, and to the form that allows the user to create a new poll both from within the app and by typing in the address into the address bar. To make sure we’re showing the data that is relevant to the user, the application should require the user to be signed in order to access those pages.
 ### Todo's Performed
+
+- [ ] Saving the user while answering question is SERVER BUGGED?.  
+- [x] Show 404 for a question that doesn't exist.
+  - [x] The design I chose uses modal dialogs so we may not need this, lets discuss it.
 - [x] Way of impersonating/logging in as an existing user.
 - [x] Know Who the logged in user is.
 - [x] Show logged in user their list of questions.
@@ -77,10 +81,7 @@ The user should be able to navigate to the leaderboard, to a specific question, 
 - [x] Entering an address in address bar redirects to login.
 
 - [x] Login and Logout Toolbar Butons do not show up. app.component's
-- [ ] Saving the user while answering question is SERVER BUGGED?.  
-- [ ] Scale the images, they are too big.
-- [ ] Match spinner background with other background
-- [ ] Show 404 for a question that doesn't exist.
+- [x] Match spinner background with other background
 - [ ] Cleanup 
 ---
 

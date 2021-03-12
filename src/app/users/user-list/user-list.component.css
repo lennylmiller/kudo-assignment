@@ -49,11 +49,6 @@ mat-row.example-element-row:active {
   opacity: 0.5;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
 .avatar {
   vertical-align: middle;
   width: 65px;

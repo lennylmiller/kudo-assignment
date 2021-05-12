@@ -9,6 +9,18 @@ export function getAllQuestions(req: Request, res: Response) {
   }, 1000);
 }
 
+export function getQuestion(req: Request, res: Response) {
+  const id = req.params['id'];
+
+  const questions: any = Object.values(QUESTIONS);
+
+  const question = questions.find((question) => question.id === id);
+
+  setTimeout(() => {
+    res.status(200).json(question);
+  }, 1000);
+}
+
 export function getQuestionByUrl(req: Request, res: Response) {
   const questionUrl = req.params['questionUrl'];
 
